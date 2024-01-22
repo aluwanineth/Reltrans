@@ -1,0 +1,89 @@
+<dx-button class="button-info" text="New User" icon="user"type="default" (onClick)="register()"></dx-button>
+<dx-data-grid
+    id="gridContainer"
+    [dataSource]="dataSource"
+    keyExpr="id"
+    [showBorders]="true"
+    (onRowUpdated)="onRowUserUpdated($event)"
+    (onRowRemoving)="onRowRemoving($event)"
+    [focusedRowEnabled]="true">
+
+    <dxo-editing
+        mode="popup"
+        [allowUpdating]="true"
+        [allowDeleting]="true"
+        [selectTextOnEditStart]="true"
+        [useIcons]="true">
+        <dxo-popup
+                  title="User Info"
+                  [showTitle]="true"
+                  [width]="560"
+                  [height]="370"
+                  [position]="{ my: 'top', at: 'top', of: 'pop' }">
+              </dxo-popup>
+              <dxo-form>
+                  <dxi-item itemType="group" [colCount]="2" [colSpan]="2">
+                    <dxi-item dataField="id" column="id" [visible]="false"></dxi-item>
+                    <dxi-item dataField="firstName" column="First Name">
+                      <dxi-validation-rule type="required" message="First Name is required"></dxi-validation-rule>
+                    </dxi-item>
+                    <dxi-item dataField="surname" column="Surname">
+                      <dxi-validation-rule type="required" message="Surname is required"></dxi-validation-rule>
+                    </dxi-item>
+                    <dxi-item dataField="contactTelNo" column="Phone No">
+                      <dxi-validation-rule type="required" message="Phone No is required"></dxi-validation-rule>
+                    </dxi-item>
+                    <dxi-item dataField="email" column="Email">
+                      <dxi-validation-rule type="required" message="Email is required"></dxi-validation-rule>
+                    </dxi-item>
+                    <dxi-item dataField="memberTypes" editorType="dxSelectBox" [editorOptions]="{ items: memberTypes, searchEnabled: true, value: '' }"column="Role"></dxi-item>
+                  </dxi-item>
+              </dxo-form>
+    </dxo-editing>
+
+
+    <dxo-paging [pageSize]="10">
+    </dxo-paging>
+
+    <dxo-pager
+        [allowedPageSizes]="[5, 10]"
+        [showPageSizeSelector]="true"
+        [showNavigationButtons]="true">
+    </dxo-pager>
+
+    <dxi-column dataField="firstName">
+    </dxi-column>
+
+    <dxi-column dataField="surname">
+    </dxi-column>
+
+    <dxi-column dataField="companyName">
+    </dxi-column>
+
+    <dxi-column dataField="memberType">
+    </dxi-column>
+
+    <dxi-column dataField="email">
+    </dxi-column>
+    <dxi-column dataField="contactTelNo">
+    </dxi-column>
+    <dxi-column type="buttons" [width]="110">
+        <dxi-button name="edit"></dxi-button>
+        <dxi-button name="delete"></dxi-button>
+        <dxi-button
+          hint="Clone"
+          icon="copy"
+        ></dxi-button>
+        <dxi-button
+          hint="Clone"
+          icon="copy"
+        ></dxi-button>
+      </dxi-column>
+
+
+</dx-data-grid>
+
+<dx-popup [width]="750" [height]="580" [showTitle]="true" title="New User" [dragEnabled]="false"
+  [closeOnOutsideClick]="false" [(visible)]="popupVisible">
+  <app-customer-register></app-customer-register>
+</dx-popup>

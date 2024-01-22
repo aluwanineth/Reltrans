@@ -1,0 +1,14 @@
+﻿namespace RelTransCustomer.Application.DTOs.Customer;
+
+public class CustomerResultResponse
+{
+    public int Id { get; set; }
+    public string FirstName { get; set; }
+    public string Surname { get; set; }
+    public string AccNo { get; set; }
+    public string CompanyName { get; set; }
+    public string Email { get; set; }
+    public string ContactTelNo { get; set; }
+    public string MemberType { get; set; }
+    public string Status { get; set; }
+}

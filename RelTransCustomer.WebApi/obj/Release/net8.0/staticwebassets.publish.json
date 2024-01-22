@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "4nhS5wYpKkpXUZS5zx64U1jKjnQyHyCpuUlbkd1eT4Q=",
+  "Source": "RelTransCustomer.WebApi",
+  "BasePath": "_content/RelTransCustomer.WebApi",
+  "Mode": "Default",
+  "ManifestType": "Publish",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

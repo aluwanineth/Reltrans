@@ -1,0 +1,221 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\GitLab\\Azure\\RelTransCustomer\\RelTransCustomer.Shared\\RelTransCustomer.Shared.csproj": {}
+  },
+  "projects": {
+    "C:\\GitLab\\Azure\\RelTransCustomer\\RelTransCustomer.Application\\RelTransCustomer.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\GitLab\\Azure\\RelTransCustomer\\RelTransCustomer.Application\\RelTransCustomer.Application.csproj",
+        "projectName": "RelTransCustomer.Application",
+        "projectPath": "C:\\GitLab\\Azure\\RelTransCustomer\\RelTransCustomer.Application\\RelTransCustomer.Application.csproj",
+        "packagesPath": "C:\\Users\\aluwa\\.nuget\\packages\\",
+        "outputPath": "C:\\GitLab\\Azure\\RelTransCustomer\\RelTransCustomer.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\aluwa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\GitLab\\Azure\\RelTransCustomer\\RelTransCustomer.Domain\\RelTransCustomer.Domain.csproj": {
+                "projectPath": "C:\\GitLab\\Azure\\RelTransCustomer\\RelTransCustomer.Domain\\RelTransCustomer.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.9.0, )"
+            },
+            "FluentValidation.DependencyInjectionExtensions": {
+              "target": "Package",
+              "version": "[11.9.0, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[11.1.0, )"
+            },
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[11.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\GitLab\\Azure\\RelTransCustomer\\RelTransCustomer.Domain\\RelTransCustomer.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\GitLab\\Azure\\RelTransCustomer\\RelTransCustomer.Domain\\RelTransCustomer.Domain.csproj",
+        "projectName": "RelTransCustomer.Domain",
+        "projectPath": "C:\\GitLab\\Azure\\RelTransCustomer\\RelTransCustomer.Domain\\RelTransCustomer.Domain.csproj",
+        "packagesPath": "C:\\Users\\aluwa\\.nuget\\packages\\",
+        "outputPath": "C:\\GitLab\\Azure\\RelTransCustomer\\RelTransCustomer.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\aluwa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\GitLab\\Azure\\RelTransCustomer\\RelTransCustomer.Shared\\RelTransCustomer.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\GitLab\\Azure\\RelTransCustomer\\RelTransCustomer.Shared\\RelTransCustomer.Shared.csproj",
+        "projectName": "RelTransCustomer.Shared",
+        "projectPath": "C:\\GitLab\\Azure\\RelTransCustomer\\RelTransCustomer.Shared\\RelTransCustomer.Shared.csproj",
+        "packagesPath": "C:\\Users\\aluwa\\.nuget\\packages\\",
+        "outputPath": "C:\\GitLab\\Azure\\RelTransCustomer\\RelTransCustomer.Shared\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\aluwa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\GitLab\\Azure\\RelTransCustomer\\RelTransCustomer.Application\\RelTransCustomer.Application.csproj": {
+                "projectPath": "C:\\GitLab\\Azure\\RelTransCustomer\\RelTransCustomer.Application\\RelTransCustomer.Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
+            "Microsoft.Extensions.Options.ConfigurationExtensions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
