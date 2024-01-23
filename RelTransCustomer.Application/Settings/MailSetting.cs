@@ -9,6 +9,7 @@ namespace RelTransCustomer.Application.Settings
     public record MailSetting
     {
         public string EmailFrom { get; set; }
+        public string EmailTo { get; set; }
         public string SmtpHost { get; set; }
         public int SmtpPort { get; set; }
         public string SmtpUsername { get; set; }

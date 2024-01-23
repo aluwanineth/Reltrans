@@ -42,9 +42,9 @@ public class CustomerRepositoryAsync : GenericRepositoryAsync<Customer>, ICustom
         }
     }
 
-    public async Task<CustomerResultResponse> GetCustomer(string email)
+    public async Task<CustomerResultResponse> GetCustomer(string email, string status)
     {
-        var qry = await _customer.FirstOrDefaultAsync(x => x.Email == email && x.Status == "Active");
+        var qry = await _customer.FirstOrDefaultAsync(x => x.Email == email && x.Status == status);
         if (qry is null)
         {
             throw new ApiException($"Username '{email}' not active yet.");
@@ -121,15 +121,17 @@ public class CustomerRepositoryAsync : GenericRepositoryAsync<Customer>, ICustom
                 {
                     while (await reader.ReadAsync())
                     {
+                        int i = 1;
                         CustomerOrders result = new CustomerOrders
                         {
+                            Id = i++,
                             JobNo = reader["JobNo"].ToString(),
                             SpecNo = reader["SpecNo"].ToString(),
                             Description = reader["Description"].ToString(),
                             Qty = Convert.ToInt32(reader["Qty"]),
                             OrderDate = Convert.ToDateTime(reader["OrderDate"]),
                             PredictDate = Convert.ToDateTime(reader["PredictDate"]),
-                            Progress = reader["Progress"].ToString(),
+                            Progress = reader["Progress"].ToString() + "%",
                             Stage = reader["Stage"].ToString(),
                         };
 

@@ -17,3 +17,4 @@ C:\GitLab\Azure\RelTransCustomer\RelTransCustomer.Persistence\obj\Debug\net8.0\R
 C:\GitLab\Azure\RelTransCustomer\RelTransCustomer.Persistence\obj\Debug\net8.0\ref\RelTransCustomer.Persistence.dll
 C:\GitLab\Azure\RelTransCustomer\RelTransCustomer.Persistence\bin\Debug\net8.0\RelTransCustomer.Shared.dll
 C:\GitLab\Azure\RelTransCustomer\RelTransCustomer.Persistence\bin\Debug\net8.0\RelTransCustomer.Shared.pdb
+C:\GitLab\Azure\RelTransCustomer\RelTransCustomer.Persistence\obj\Debug\net8.0\RelTransCustomer.Persistence.sourcelink.json

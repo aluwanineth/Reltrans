@@ -31,6 +31,11 @@ Log.Logger = new LoggerConfiguration()
     .WriteTo.File("Log/application.log", rollingInterval: RollingInterval.Day)
     .CreateLogger();
 
+builder.Services.AddLogging(loggingBuilder =>
+{
+    loggingBuilder.AddSerilog();
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

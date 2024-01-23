@@ -51,7 +51,7 @@ export class CreateAccountFormComponent {
               this.router.navigate(['/user-data']);
             },
             error => {
-              notify({ message: error, width: 300, shading: true }, 'error', 5000);
+              notify({ message: error.error.Message, width: 300, shading: true }, 'error', 5000);
             }
         );
     this.loading = false;

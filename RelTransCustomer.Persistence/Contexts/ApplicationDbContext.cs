@@ -31,7 +31,7 @@ namespace RelTransCustomer.Persistence.Contexts
                     case EntityState.Modified:
                         entry.Entity.CreatedDate = _dateTime.CurrentDateTime
                             ;
-                        entry.Entity.CreatedBy = _authenticatedUser.UserId;
+                        entry.Entity.CreatedBy = _authenticatedUser.UserId ?? "Admin";
                         break;
                 }
             }

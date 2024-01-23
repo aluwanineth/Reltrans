@@ -27,11 +27,13 @@ public class AccountService : IAccountService
     private readonly SignInManager<ApplicationUser> _signInManager;
     private readonly IEmailService _emailService;
     private readonly JWTSettings _jwtSettings;
+    private readonly MailSetting _mailSetting;
     private readonly IDateTimeService _dateTimeService;
     private readonly ICustomerRepositoryAsync _customerRepositoryAsync;
     public AccountService(UserManager<ApplicationUser> userManager,
         RoleManager<IdentityRole> roleManager,
         IOptions<JWTSettings> jwtSettings,
+        IOptions<MailSetting> mailSetting,
         IDateTimeService dateTimeService,
         SignInManager<ApplicationUser> signInManager,
         IEmailService emailService,
@@ -40,6 +42,7 @@ public class AccountService : IAccountService
         _userManager = userManager;
         _roleManager = roleManager;
         _jwtSettings = jwtSettings.Value;
+        _mailSetting = mailSetting.Value;
         _dateTimeService = dateTimeService;
         _signInManager = signInManager;
         this._emailService = emailService;
@@ -64,7 +67,7 @@ public class AccountService : IAccountService
         }
         JwtSecurityToken jwtSecurityToken = await GenerateJWToken(user);
 
-        var customer = await _customerRepositoryAsync.GetCustomer(request.Email);
+        var customer = await _customerRepositoryAsync.GetCustomer(request.Email, "Active");
         var memberTypeArray = customer.MemberType.Split(',');
         List<string> roles = new List<string>(memberTypeArray);
 
@@ -120,7 +123,6 @@ public class AccountService : IAccountService
             FirstName = request.FirstName,
             Surname = request.Surname,
             MemberType = request.MemberType,    
-            EmailConfirmed = true,
         };
         var userWithSameEmail = await _userManager.FindByEmailAsync(request.Email);
         if (userWithSameEmail == null)
@@ -154,7 +156,18 @@ public class AccountService : IAccountService
 
                 await _customerRepositoryAsync.AddCustomer(customer);
 
-                return new Response<string>(user.Id, message: $"User Registered Sucessfully");
+                var verificationUri = await SendVerificationEmail(user, origin);
+                ////TODO: Attach Email Service here and configure it via appsettings
+                await _emailService.SendAsync(new Application.DTOs.Email.EmailRequest 
+                { 
+                    From = _mailSetting.EmailFrom, 
+                    To = _mailSetting.EmailTo, 
+                    Body = $"Please check the new customer user for {user.Email} you can approve the customer by visiting this URL {verificationUri}",
+                    Subject = "Confirm Registration" 
+                });
+                return new Response<string>(user.Id, message: $"Customer Registered. Pending verification. You will receive an email once verification is successfully.");
+
+                //return new Response<string>(user.Id, message: $"User Registered Sucessfully");
             }
             else
             {
@@ -246,6 +259,34 @@ public class AccountService : IAccountService
         var result = await _userManager.ConfirmEmailAsync(user, code);
         if (result.Succeeded)
         {
+            var customer = await _customerRepositoryAsync.GetCustomer(user.Email, "Pending");
+            if (customer != null) 
+            {
+                var updateCustomer = new Customer
+                {
+                    CreatedDate = DateTime.Now,
+                    CreatedBy = "Admin",
+                    ContactTelNo = customer.ContactTelNo,
+                    AccNo = CreateAccNo(customer.CompanyName),
+                    CompanyName = customer.CompanyName,
+                    Email = customer.Email,
+                    FirstName = customer.FirstName,
+                    MemberType = customer.MemberType,
+                    Id = customer.Id,
+                    Status = "Active",
+                    Surname = customer.Surname,
+                    UserId = user.Id
+                };
+                await _customerRepositoryAsync.UpdateAsync(updateCustomer);
+            }
+            await _emailService.SendAsync(new Application.DTOs.Email.EmailRequest
+            {
+                From = _mailSetting.EmailFrom,
+               // To = user.Email ,
+               To = _mailSetting.EmailTo,
+                Body = $"Account Confirmed for {user.Email}. You can now use the /api/Account/authenticate endpoint.",
+                Subject = "Confirm Registration"
+            });
             return new Response<string>(user.Id, message: $"Account Confirmed for {user.Email}. You can now use the /api/Account/authenticate endpoint.");
         }
         else
@@ -362,6 +403,18 @@ public class AccountService : IAccountService
         else
         {
             throw new ApiException($"Email {request.Email} is already registered.");
+        }
+    }
+
+    private string CreateAccNo(string input)
+    {
+        if (input.Length >= 7)
+        {
+            return input.Substring(0, 7);
+        }
+        else
+        {
+            return input;
         }
     }
 }

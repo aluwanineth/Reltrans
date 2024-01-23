@@ -21,3 +21,4 @@ C:\GitLab\Azure\RelTransCustomer\RelTransCustomer.Identity\obj\Debug\net8.0\RelT
 C:\GitLab\Azure\RelTransCustomer\RelTransCustomer.Identity\obj\Debug\net8.0\ref\RelTransCustomer.Identity.dll
 C:\GitLab\Azure\RelTransCustomer\RelTransCustomer.Identity\bin\Debug\net8.0\RelTransCustomer.Shared.dll
 C:\GitLab\Azure\RelTransCustomer\RelTransCustomer.Identity\bin\Debug\net8.0\RelTransCustomer.Shared.pdb
+C:\GitLab\Azure\RelTransCustomer\RelTransCustomer.Identity\obj\Debug\net8.0\RelTransCustomer.Identity.sourcelink.json

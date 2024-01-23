@@ -93,6 +93,17 @@ namespace RelTransCustomer.WebApi.Controllers
             var origin = Request.Headers["origin"];
             return Ok(await _accountService.RefreshToken(tokenApiModel, origin));
         }
+
+        [HttpGet("confirm-email")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> ConfirmEmailAsync([FromQuery] string userId, [FromQuery] string code)
+        {
+            var origin = Request.Headers["origin"];
+            return Ok(await _accountService.ConfirmEmailAsync(userId, code));
+        }
+
         private string GenerateIPAddress()
         {
             if (Request.Headers.ContainsKey("X-Forwarded-For"))

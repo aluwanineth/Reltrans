@@ -15,7 +15,7 @@ namespace RelTransCustomer.Application.Features.Customer.Queries.GetCustomerByEm
         }
         public async Task<Response<CustomerResultResponse>> Handle(GetCustomerByEmailQuery request, CancellationToken cancellationToken)
         {
-            var result = await _customerRepositoryAsync.GetCustomer(request.Email);
+            var result = await _customerRepositoryAsync.GetCustomer(request.Email, "Active");
             if (result == null) throw new ApiException($"Customer orders not found for email {request.Email}.");
 
             return new Response<CustomerResultResponse>(result);

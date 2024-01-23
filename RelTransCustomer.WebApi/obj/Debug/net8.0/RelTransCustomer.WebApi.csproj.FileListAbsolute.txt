@@ -178,3 +178,4 @@ C:\GitLab\Azure\RelTransCustomer\RelTransCustomer.WebApi\bin\Debug\net8.0\MailKi
 C:\GitLab\Azure\RelTransCustomer\RelTransCustomer.WebApi\bin\Debug\net8.0\MimeKit.dll
 C:\GitLab\Azure\RelTransCustomer\RelTransCustomer.WebApi\bin\Debug\net8.0\RelTransCustomer.Shared.dll
 C:\GitLab\Azure\RelTransCustomer\RelTransCustomer.WebApi\bin\Debug\net8.0\RelTransCustomer.Shared.pdb
+C:\GitLab\Azure\RelTransCustomer\RelTransCustomer.WebApi\obj\Debug\net8.0\RelTransCustomer.WebApi.sourcelink.json

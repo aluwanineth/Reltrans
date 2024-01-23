@@ -13,3 +13,4 @@ C:\GitLab\Azure\RelTransCustomer\RelTransCustomer.Application\obj\Debug\net8.0\R
 C:\GitLab\Azure\RelTransCustomer\RelTransCustomer.Application\obj\Debug\net8.0\refint\RelTransCustomer.Application.dll
 C:\GitLab\Azure\RelTransCustomer\RelTransCustomer.Application\obj\Debug\net8.0\RelTransCustomer.Application.pdb
 C:\GitLab\Azure\RelTransCustomer\RelTransCustomer.Application\obj\Debug\net8.0\ref\RelTransCustomer.Application.dll
+C:\GitLab\Azure\RelTransCustomer\RelTransCustomer.Application\obj\Debug\net8.0\RelTransCustomer.Application.sourcelink.json

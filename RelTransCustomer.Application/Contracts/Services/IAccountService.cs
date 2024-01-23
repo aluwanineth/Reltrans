@@ -11,6 +11,7 @@ public interface IAccountService
     Task<Response<string>> RegisterAsync(RegisterRequest request, string origin);
     Task<Response<string>> RegisterAsync(AddCustomerModel request, string origin);
     Task<Response<TokenModel>> RefreshToken(TokenModel tokenModel, string ipAddress);
+    Task<Response<string>> ConfirmEmailAsync(string userId, string code);
     Task<Response<string>> DeleteCustomer(int customerId);
     Task<Response<string>> UpdateCustomer(UpdateCustomerModel model);
     Task<Response<string>> AssignRoles(AssignRolesModel assignRolesModel);

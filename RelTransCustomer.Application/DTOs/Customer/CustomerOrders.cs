@@ -2,6 +2,7 @@
 
 public class CustomerOrders
 {
+    public int Id { get; set; } 
     public string JobNo {  get; set; }  
     public string SpecNo {  get; set; }
     public string Description {  get; set; }    

@@ -7,7 +7,7 @@ namespace RelTransCustomer.Application.Contracts.Repositories;
 public interface ICustomerRepositoryAsync : IGenericRepositoryAsync<Customer>
 {
     Task<IEnumerable<CustomerOrders>> GetCustomerOrders(string accNo);
-    Task<CustomerResultResponse> GetCustomer(string email);
+    Task<CustomerResultResponse> GetCustomer(string email, string status);
     Task AddCustomer(Customer model);
     Task<IEnumerable<Customer>> GetCuatomersByCompanyName(string companyName);
     Task<string> DeleteCustomer(int customerId);
