@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RelTransCustomer.Application.Contracts.Services;
+using RelTransCustomer.Application.Features.Customer.Queries.GetAllCustomers;
 using RelTransCustomer.Application.Features.Customer.Queries.GetCustomerByEmail;
 using RelTransCustomer.Application.Features.Customer.Queries.GetCustomerOrders;
 using RelTransCustomer.Application.Features.Customer.Queries.GetCustomersByCompanyName;
@@ -39,9 +40,18 @@ namespace RelTransCustomer.WebApi.Controllers.V1
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpGet("getCustomers")]
-        public async Task<IActionResult> getCustomerrs([FromQuery] string companyName)
+        public async Task<IActionResult> getCustomers([FromQuery] string companyName)
         {
             return Ok(await Mediator.Send(new GetCustomersByCompanyNameQuery { CompanyName = companyName }));
+        }
+
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [HttpGet("getAllCustomers")]
+        public async Task<IActionResult> getAllCustomers()
+        {
+            return Ok(await Mediator.Send(new GetAllCustomersQuery()));
         }
     }
 }

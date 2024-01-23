@@ -1606,19 +1606,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\aluwa\\.nuget\\packages\\": {}
+    "C:\\Users\\anethavhakone\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\GitLab\\Azure\\RelTransCustomer\\RelTransCustomer.Shared\\RelTransCustomer.Shared.csproj",
+      "projectUniqueName": "C:\\Git\\Reltrans\\RelTransCustomer.Shared\\RelTransCustomer.Shared.csproj",
       "projectName": "RelTransCustomer.Shared",
-      "projectPath": "C:\\GitLab\\Azure\\RelTransCustomer\\RelTransCustomer.Shared\\RelTransCustomer.Shared.csproj",
-      "packagesPath": "C:\\Users\\aluwa\\.nuget\\packages\\",
-      "outputPath": "C:\\GitLab\\Azure\\RelTransCustomer\\RelTransCustomer.Shared\\obj\\",
+      "projectPath": "C:\\Git\\Reltrans\\RelTransCustomer.Shared\\RelTransCustomer.Shared.csproj",
+      "packagesPath": "C:\\Users\\anethavhakone\\.nuget\\packages\\",
+      "outputPath": "C:\\Git\\Reltrans\\RelTransCustomer.Shared\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\aluwa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\anethavhakone\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1632,8 +1632,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\GitLab\\Azure\\RelTransCustomer\\RelTransCustomer.Application\\RelTransCustomer.Application.csproj": {
-              "projectPath": "C:\\GitLab\\Azure\\RelTransCustomer\\RelTransCustomer.Application\\RelTransCustomer.Application.csproj"
+            "C:\\Git\\Reltrans\\RelTransCustomer.Application\\RelTransCustomer.Application.csproj": {
+              "projectPath": "C:\\Git\\Reltrans\\RelTransCustomer.Application\\RelTransCustomer.Application.csproj"
             }
           }
         }

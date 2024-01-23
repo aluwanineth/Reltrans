@@ -4706,19 +4706,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\aluwa\\.nuget\\packages\\": {}
+    "C:\\Users\\anethavhakone\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\GitLab\\Azure\\RelTransCustomer\\RelTransCustomer.Identity\\RelTransCustomer.Identity.csproj",
+      "projectUniqueName": "C:\\Git\\Reltrans\\RelTransCustomer.Identity\\RelTransCustomer.Identity.csproj",
       "projectName": "RelTransCustomer.Identity",
-      "projectPath": "C:\\GitLab\\Azure\\RelTransCustomer\\RelTransCustomer.Identity\\RelTransCustomer.Identity.csproj",
-      "packagesPath": "C:\\Users\\aluwa\\.nuget\\packages\\",
-      "outputPath": "C:\\GitLab\\Azure\\RelTransCustomer\\RelTransCustomer.Identity\\obj\\",
+      "projectPath": "C:\\Git\\Reltrans\\RelTransCustomer.Identity\\RelTransCustomer.Identity.csproj",
+      "packagesPath": "C:\\Users\\anethavhakone\\.nuget\\packages\\",
+      "outputPath": "C:\\Git\\Reltrans\\RelTransCustomer.Identity\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\aluwa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\anethavhakone\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4732,14 +4732,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\GitLab\\Azure\\RelTransCustomer\\RelTransCustomer.Application\\RelTransCustomer.Application.csproj": {
-              "projectPath": "C:\\GitLab\\Azure\\RelTransCustomer\\RelTransCustomer.Application\\RelTransCustomer.Application.csproj"
+            "C:\\Git\\Reltrans\\RelTransCustomer.Application\\RelTransCustomer.Application.csproj": {
+              "projectPath": "C:\\Git\\Reltrans\\RelTransCustomer.Application\\RelTransCustomer.Application.csproj"
             },
-            "C:\\GitLab\\Azure\\RelTransCustomer\\RelTransCustomer.Persistence\\RelTransCustomer.Persistence.csproj": {
-              "projectPath": "C:\\GitLab\\Azure\\RelTransCustomer\\RelTransCustomer.Persistence\\RelTransCustomer.Persistence.csproj"
+            "C:\\Git\\Reltrans\\RelTransCustomer.Persistence\\RelTransCustomer.Persistence.csproj": {
+              "projectPath": "C:\\Git\\Reltrans\\RelTransCustomer.Persistence\\RelTransCustomer.Persistence.csproj"
             },
-            "C:\\GitLab\\Azure\\RelTransCustomer\\RelTransCustomer.Shared\\RelTransCustomer.Shared.csproj": {
-              "projectPath": "C:\\GitLab\\Azure\\RelTransCustomer\\RelTransCustomer.Shared\\RelTransCustomer.Shared.csproj"
+            "C:\\Git\\Reltrans\\RelTransCustomer.Shared\\RelTransCustomer.Shared.csproj": {
+              "projectPath": "C:\\Git\\Reltrans\\RelTransCustomer.Shared\\RelTransCustomer.Shared.csproj"
             }
           }
         }
