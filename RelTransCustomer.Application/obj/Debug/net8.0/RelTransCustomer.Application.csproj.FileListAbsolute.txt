@@ -30,3 +30,19 @@ C:\Git\Reltrans\RelTransCustomer.Application\obj\Debug\net8.0\RelTransCustomer.A
 C:\Git\Reltrans\RelTransCustomer.Application\obj\Debug\net8.0\refint\RelTransCustomer.Application.dll
 C:\Git\Reltrans\RelTransCustomer.Application\obj\Debug\net8.0\RelTransCustomer.Application.pdb
 C:\Git\Reltrans\RelTransCustomer.Application\obj\Debug\net8.0\ref\RelTransCustomer.Application.dll
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Application\bin\Debug\net8.0\RelTransCustomer.Application.deps.json
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Application\bin\Debug\net8.0\RelTransCustomer.Application.dll
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Application\bin\Debug\net8.0\RelTransCustomer.Application.pdb
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Application\bin\Debug\net8.0\RelTransCustomer.Domain.dll
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Application\bin\Debug\net8.0\RelTransCustomer.Domain.pdb
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Application\obj\Debug\net8.0\RelTransCustomer.Application.csproj.AssemblyReference.cache
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Application\obj\Debug\net8.0\RelTransCustomer.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Application\obj\Debug\net8.0\RelTransCustomer.Application.AssemblyInfoInputs.cache
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Application\obj\Debug\net8.0\RelTransCustomer.Application.AssemblyInfo.cs
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Application\obj\Debug\net8.0\RelTransCustomer.Application.csproj.CoreCompileInputs.cache
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Application\obj\Debug\net8.0\RelTransCustomer.Application.sourcelink.json
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Application\obj\Debug\net8.0\RelTransCustomer.Application.csproj.CopyComplete
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Application\obj\Debug\net8.0\RelTransCustomer.Application.dll
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Application\obj\Debug\net8.0\refint\RelTransCustomer.Application.dll
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Application\obj\Debug\net8.0\RelTransCustomer.Application.pdb
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Application\obj\Debug\net8.0\ref\RelTransCustomer.Application.dll

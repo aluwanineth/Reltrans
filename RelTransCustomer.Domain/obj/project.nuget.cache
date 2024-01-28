@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yJNIos//pYAQgmP5ng53eSOD43MsRpA1NTd/CAi7NlTDGLuNzvjRSGPlAjnSffxO9h78yLVLO9jfi5gz3LkHlQ==",
+  "dgSpecHash": "887sDgIpTg+EbOO2anogp7AB20mm7pHq2CPXZEE/aFmNezIMypbGDZ0MI2ui/D5HwLsKtVYhW6IRo2LF/r2ngA==",
   "success": true,
-  "projectFilePath": "C:\\Git\\Reltrans\\RelTransCustomer.Domain\\RelTransCustomer.Domain.csproj",
+  "projectFilePath": "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Domain\\RelTransCustomer.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -17,6 +17,9 @@ namespace RelTransCustomer.Persistence.Contexts
             _authenticatedUser = authenticatedUser;
         }
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<Menu> Menus { get; set; }
+        public DbSet<SubMenu> SubMenus { get; set; }
+        public DbSet<MenuType> MenuTypes { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
@@ -29,9 +32,9 @@ namespace RelTransCustomer.Persistence.Contexts
                         entry.Entity.CreatedBy = _authenticatedUser.UserId ?? "Admin";
                         break;
                     case EntityState.Modified:
-                        entry.Entity.CreatedDate = _dateTime.CurrentDateTime
+                        entry.Entity.ModifiedDate = _dateTime.CurrentDateTime
                             ;
-                        entry.Entity.CreatedBy = _authenticatedUser.UserId ?? "Admin";
+                        entry.Entity.ModifiedBy = _authenticatedUser.UserId ?? "Admin";
                         break;
                 }
             }

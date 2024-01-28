@@ -19,6 +19,8 @@ public static class ServiceRegistration
         
         services.AddTransient(typeof(IGenericRepositoryAsync<>), typeof(GenericRepositoryAsync<>));
         services.AddTransient<ICustomerRepositoryAsync, CustomerRepositoryAsync>();
-        
+        services.AddTransient<IMenuRepositoryAsync, MenuRepositoryAsync>();
+        services.AddTransient<ISubMenuRepositoryAsync, SubMenuRepositoryAsync>();
+
     }
 }

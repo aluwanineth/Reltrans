@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Git\\Reltrans\\RelTransCustomer.Identity\\RelTransCustomer.Identity.csproj": {}
+    "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Identity\\RelTransCustomer.Identity.csproj": {}
   },
   "projects": {
-    "C:\\Git\\Reltrans\\RelTransCustomer.Application\\RelTransCustomer.Application.csproj": {
+    "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Application\\RelTransCustomer.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Git\\Reltrans\\RelTransCustomer.Application\\RelTransCustomer.Application.csproj",
+        "projectUniqueName": "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Application\\RelTransCustomer.Application.csproj",
         "projectName": "RelTransCustomer.Application",
-        "projectPath": "C:\\Git\\Reltrans\\RelTransCustomer.Application\\RelTransCustomer.Application.csproj",
-        "packagesPath": "C:\\Users\\anethavhakone\\.nuget\\packages\\",
-        "outputPath": "C:\\Git\\Reltrans\\RelTransCustomer.Application\\obj\\",
+        "projectPath": "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Application\\RelTransCustomer.Application.csproj",
+        "packagesPath": "C:\\Users\\aluwa\\.nuget\\packages\\",
+        "outputPath": "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\anethavhakone\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\aluwa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +28,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Git\\Reltrans\\RelTransCustomer.Domain\\RelTransCustomer.Domain.csproj": {
-                "projectPath": "C:\\Git\\Reltrans\\RelTransCustomer.Domain\\RelTransCustomer.Domain.csproj"
+              "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Domain\\RelTransCustomer.Domain.csproj": {
+                "projectPath": "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Domain\\RelTransCustomer.Domain.csproj"
               }
             }
           }
@@ -89,17 +89,17 @@
         }
       }
     },
-    "C:\\Git\\Reltrans\\RelTransCustomer.Domain\\RelTransCustomer.Domain.csproj": {
+    "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Domain\\RelTransCustomer.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Git\\Reltrans\\RelTransCustomer.Domain\\RelTransCustomer.Domain.csproj",
+        "projectUniqueName": "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Domain\\RelTransCustomer.Domain.csproj",
         "projectName": "RelTransCustomer.Domain",
-        "projectPath": "C:\\Git\\Reltrans\\RelTransCustomer.Domain\\RelTransCustomer.Domain.csproj",
-        "packagesPath": "C:\\Users\\anethavhakone\\.nuget\\packages\\",
-        "outputPath": "C:\\Git\\Reltrans\\RelTransCustomer.Domain\\obj\\",
+        "projectPath": "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Domain\\RelTransCustomer.Domain.csproj",
+        "packagesPath": "C:\\Users\\aluwa\\.nuget\\packages\\",
+        "outputPath": "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\anethavhakone\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\aluwa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -144,17 +144,17 @@
         }
       }
     },
-    "C:\\Git\\Reltrans\\RelTransCustomer.Identity\\RelTransCustomer.Identity.csproj": {
+    "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Identity\\RelTransCustomer.Identity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Git\\Reltrans\\RelTransCustomer.Identity\\RelTransCustomer.Identity.csproj",
+        "projectUniqueName": "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Identity\\RelTransCustomer.Identity.csproj",
         "projectName": "RelTransCustomer.Identity",
-        "projectPath": "C:\\Git\\Reltrans\\RelTransCustomer.Identity\\RelTransCustomer.Identity.csproj",
-        "packagesPath": "C:\\Users\\anethavhakone\\.nuget\\packages\\",
-        "outputPath": "C:\\Git\\Reltrans\\RelTransCustomer.Identity\\obj\\",
+        "projectPath": "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Identity\\RelTransCustomer.Identity.csproj",
+        "packagesPath": "C:\\Users\\aluwa\\.nuget\\packages\\",
+        "outputPath": "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Identity\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\anethavhakone\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\aluwa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -168,14 +168,14 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Git\\Reltrans\\RelTransCustomer.Application\\RelTransCustomer.Application.csproj": {
-                "projectPath": "C:\\Git\\Reltrans\\RelTransCustomer.Application\\RelTransCustomer.Application.csproj"
+              "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Application\\RelTransCustomer.Application.csproj": {
+                "projectPath": "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Application\\RelTransCustomer.Application.csproj"
               },
-              "C:\\Git\\Reltrans\\RelTransCustomer.Persistence\\RelTransCustomer.Persistence.csproj": {
-                "projectPath": "C:\\Git\\Reltrans\\RelTransCustomer.Persistence\\RelTransCustomer.Persistence.csproj"
+              "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Persistence\\RelTransCustomer.Persistence.csproj": {
+                "projectPath": "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Persistence\\RelTransCustomer.Persistence.csproj"
               },
-              "C:\\Git\\Reltrans\\RelTransCustomer.Shared\\RelTransCustomer.Shared.csproj": {
-                "projectPath": "C:\\Git\\Reltrans\\RelTransCustomer.Shared\\RelTransCustomer.Shared.csproj"
+              "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Shared\\RelTransCustomer.Shared.csproj": {
+                "projectPath": "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Shared\\RelTransCustomer.Shared.csproj"
               }
             }
           }
@@ -249,17 +249,17 @@
         }
       }
     },
-    "C:\\Git\\Reltrans\\RelTransCustomer.Persistence\\RelTransCustomer.Persistence.csproj": {
+    "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Persistence\\RelTransCustomer.Persistence.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Git\\Reltrans\\RelTransCustomer.Persistence\\RelTransCustomer.Persistence.csproj",
+        "projectUniqueName": "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Persistence\\RelTransCustomer.Persistence.csproj",
         "projectName": "RelTransCustomer.Persistence",
-        "projectPath": "C:\\Git\\Reltrans\\RelTransCustomer.Persistence\\RelTransCustomer.Persistence.csproj",
-        "packagesPath": "C:\\Users\\anethavhakone\\.nuget\\packages\\",
-        "outputPath": "C:\\Git\\Reltrans\\RelTransCustomer.Persistence\\obj\\",
+        "projectPath": "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Persistence\\RelTransCustomer.Persistence.csproj",
+        "packagesPath": "C:\\Users\\aluwa\\.nuget\\packages\\",
+        "outputPath": "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Persistence\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\anethavhakone\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\aluwa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -273,11 +273,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Git\\Reltrans\\RelTransCustomer.Application\\RelTransCustomer.Application.csproj": {
-                "projectPath": "C:\\Git\\Reltrans\\RelTransCustomer.Application\\RelTransCustomer.Application.csproj"
+              "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Application\\RelTransCustomer.Application.csproj": {
+                "projectPath": "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Application\\RelTransCustomer.Application.csproj"
               },
-              "C:\\Git\\Reltrans\\RelTransCustomer.Shared\\RelTransCustomer.Shared.csproj": {
-                "projectPath": "C:\\Git\\Reltrans\\RelTransCustomer.Shared\\RelTransCustomer.Shared.csproj"
+              "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Shared\\RelTransCustomer.Shared.csproj": {
+                "projectPath": "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Shared\\RelTransCustomer.Shared.csproj"
               }
             }
           }
@@ -325,17 +325,17 @@
         }
       }
     },
-    "C:\\Git\\Reltrans\\RelTransCustomer.Shared\\RelTransCustomer.Shared.csproj": {
+    "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Shared\\RelTransCustomer.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Git\\Reltrans\\RelTransCustomer.Shared\\RelTransCustomer.Shared.csproj",
+        "projectUniqueName": "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Shared\\RelTransCustomer.Shared.csproj",
         "projectName": "RelTransCustomer.Shared",
-        "projectPath": "C:\\Git\\Reltrans\\RelTransCustomer.Shared\\RelTransCustomer.Shared.csproj",
-        "packagesPath": "C:\\Users\\anethavhakone\\.nuget\\packages\\",
-        "outputPath": "C:\\Git\\Reltrans\\RelTransCustomer.Shared\\obj\\",
+        "projectPath": "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Shared\\RelTransCustomer.Shared.csproj",
+        "packagesPath": "C:\\Users\\aluwa\\.nuget\\packages\\",
+        "outputPath": "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Shared\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\anethavhakone\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\aluwa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -349,8 +349,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Git\\Reltrans\\RelTransCustomer.Application\\RelTransCustomer.Application.csproj": {
-                "projectPath": "C:\\Git\\Reltrans\\RelTransCustomer.Application\\RelTransCustomer.Application.csproj"
+              "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Application\\RelTransCustomer.Application.csproj": {
+                "projectPath": "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Application\\RelTransCustomer.Application.csproj"
               }
             }
           }

@@ -46,3 +46,27 @@ C:\Git\Reltrans\RelTransCustomer.Identity\obj\Debug\net8.0\refint\RelTransCustom
 C:\Git\Reltrans\RelTransCustomer.Identity\obj\Debug\net8.0\RelTransCustomer.Identity.pdb
 C:\Git\Reltrans\RelTransCustomer.Identity\obj\Debug\net8.0\RelTransCustomer.Identity.genruntimeconfig.cache
 C:\Git\Reltrans\RelTransCustomer.Identity\obj\Debug\net8.0\ref\RelTransCustomer.Identity.dll
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Identity\bin\Debug\net8.0\RelTransCustomer.Identity.deps.json
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Identity\bin\Debug\net8.0\RelTransCustomer.Identity.runtimeconfig.json
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Identity\bin\Debug\net8.0\RelTransCustomer.Identity.dll
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Identity\bin\Debug\net8.0\RelTransCustomer.Identity.pdb
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Identity\bin\Debug\net8.0\RelTransCustomer.Application.dll
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Identity\bin\Debug\net8.0\RelTransCustomer.Domain.dll
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Identity\bin\Debug\net8.0\RelTransCustomer.Persistence.dll
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Identity\bin\Debug\net8.0\RelTransCustomer.Shared.dll
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Identity\bin\Debug\net8.0\RelTransCustomer.Application.pdb
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Identity\bin\Debug\net8.0\RelTransCustomer.Persistence.pdb
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Identity\bin\Debug\net8.0\RelTransCustomer.Shared.pdb
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Identity\bin\Debug\net8.0\RelTransCustomer.Domain.pdb
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Identity\obj\Debug\net8.0\RelTransCustomer.Identity.csproj.AssemblyReference.cache
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Identity\obj\Debug\net8.0\RelTransCustomer.Identity.GeneratedMSBuildEditorConfig.editorconfig
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Identity\obj\Debug\net8.0\RelTransCustomer.Identity.AssemblyInfoInputs.cache
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Identity\obj\Debug\net8.0\RelTransCustomer.Identity.AssemblyInfo.cs
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Identity\obj\Debug\net8.0\RelTransCustomer.Identity.csproj.CoreCompileInputs.cache
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Identity\obj\Debug\net8.0\RelTransCustomer.Identity.sourcelink.json
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Identity\obj\Debug\net8.0\RelTransCustomer.Identity.csproj.CopyComplete
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Identity\obj\Debug\net8.0\RelTransCustomer.Identity.dll
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Identity\obj\Debug\net8.0\refint\RelTransCustomer.Identity.dll
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Identity\obj\Debug\net8.0\RelTransCustomer.Identity.pdb
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Identity\obj\Debug\net8.0\RelTransCustomer.Identity.genruntimeconfig.cache
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Identity\obj\Debug\net8.0\ref\RelTransCustomer.Identity.dll

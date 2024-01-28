@@ -11,4 +11,6 @@ public class CustomerResultResponse
     public string ContactTelNo { get; set; }
     public string MemberType { get; set; }
     public string Status { get; set; }
+    public string UserId { get; set; }
+    public string Code { get; set; }
 }

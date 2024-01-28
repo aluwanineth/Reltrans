@@ -104,6 +104,16 @@ namespace RelTransCustomer.WebApi.Controllers
             return Ok(await _accountService.ConfirmEmailAsync(userId, code));
         }
 
+        [HttpPost("confirm-Registration")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> ConfirmRegistration(string userId)
+        {
+            return Ok(await _accountService.ConfirmRegistrationAsync(userId));
+        }
+
         private string GenerateIPAddress()
         {
             if (Request.Headers.ContainsKey("X-Forwarded-For"))

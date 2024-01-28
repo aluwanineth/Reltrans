@@ -12,7 +12,7 @@ using RelTransCustomer.Identity.Contexts;
 namespace RelTransCustomer.Identity.Migrations
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20240117204625_InitialCreate")]
+    [Migration("20240126122449_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -245,6 +245,12 @@ namespace RelTransCustomer.Identity.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("RefreshToken")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("RefreshTokenExpiryTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");

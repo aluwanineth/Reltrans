@@ -59,7 +59,9 @@ public class CustomerRepositoryAsync : GenericRepositoryAsync<Customer>, ICustom
             Email = qry.Email,
             FirstName = qry.FirstName,
             MemberType = qry.MemberType,
-            Surname = qry.Surname
+            Surname = qry.Surname,
+            UserId = qry.UserId,
+            Code = qry.Code
         };
     }
 
@@ -189,14 +191,12 @@ public class CustomerRepositoryAsync : GenericRepositoryAsync<Customer>, ICustom
 
             if (identityResult.Succeeded)
             {
-                var customer = new Customer
-                {
-                    ContactTelNo = model.ContactTelNo,  
-                    Email = model.Email,    
-                    FirstName = model.FirstName,
-                    Surname = model.Surname,
-                    MemberType = string.Join(",",model.MemberType)
-                };
+                var customer = await GetByIdAsync(model.Id);
+                customer.ContactTelNo = model.ContactTelNo;
+                customer.Email = model.Email;
+                customer.FirstName = model.FirstName;
+                customer.Surname = model.Surname;
+                    
                 await UpdateAsync(customer);
                 result = "Customer updated sucessfully.";
             }

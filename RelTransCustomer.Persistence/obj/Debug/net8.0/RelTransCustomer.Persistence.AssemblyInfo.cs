@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RelTransCustomer.Persistence")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4724dbed271e39ec05f318e04ce4c80c2d3485d1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+731fc7f837a35ebe7cc627a7fee91df99cbbc520")]
 [assembly: System.Reflection.AssemblyProductAttribute("RelTransCustomer.Persistence")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RelTransCustomer.Persistence")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

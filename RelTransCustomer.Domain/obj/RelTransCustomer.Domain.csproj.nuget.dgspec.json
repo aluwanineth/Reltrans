@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Git\\Reltrans\\RelTransCustomer.Domain\\RelTransCustomer.Domain.csproj": {}
+    "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Domain\\RelTransCustomer.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Git\\Reltrans\\RelTransCustomer.Domain\\RelTransCustomer.Domain.csproj": {
+    "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Domain\\RelTransCustomer.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Git\\Reltrans\\RelTransCustomer.Domain\\RelTransCustomer.Domain.csproj",
+        "projectUniqueName": "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Domain\\RelTransCustomer.Domain.csproj",
         "projectName": "RelTransCustomer.Domain",
-        "projectPath": "C:\\Git\\Reltrans\\RelTransCustomer.Domain\\RelTransCustomer.Domain.csproj",
-        "packagesPath": "C:\\Users\\anethavhakone\\.nuget\\packages\\",
-        "outputPath": "C:\\Git\\Reltrans\\RelTransCustomer.Domain\\obj\\",
+        "projectPath": "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Domain\\RelTransCustomer.Domain.csproj",
+        "packagesPath": "C:\\Users\\aluwa\\.nuget\\packages\\",
+        "outputPath": "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\anethavhakone\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\aluwa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

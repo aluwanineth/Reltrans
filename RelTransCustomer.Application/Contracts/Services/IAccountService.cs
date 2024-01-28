@@ -16,5 +16,6 @@ public interface IAccountService
     Task<Response<string>> UpdateCustomer(UpdateCustomerModel model);
     Task<Response<string>> AssignRoles(AssignRolesModel assignRolesModel);
     Task<Response<string>> RemoveRoles(AssignRolesModel assignRolesModel);
+    Task<Response<string>> ConfirmRegistrationAsync(string userId);
 
 }

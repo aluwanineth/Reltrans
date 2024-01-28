@@ -38,3 +38,23 @@ C:\Git\Reltrans\RelTransCustomer.Persistence\obj\Debug\net8.0\RelTransCustomer.P
 C:\Git\Reltrans\RelTransCustomer.Persistence\obj\Debug\net8.0\refint\RelTransCustomer.Persistence.dll
 C:\Git\Reltrans\RelTransCustomer.Persistence\obj\Debug\net8.0\RelTransCustomer.Persistence.pdb
 C:\Git\Reltrans\RelTransCustomer.Persistence\obj\Debug\net8.0\ref\RelTransCustomer.Persistence.dll
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Persistence\bin\Debug\net8.0\RelTransCustomer.Persistence.deps.json
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Persistence\bin\Debug\net8.0\RelTransCustomer.Persistence.dll
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Persistence\bin\Debug\net8.0\RelTransCustomer.Persistence.pdb
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Persistence\bin\Debug\net8.0\RelTransCustomer.Application.dll
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Persistence\bin\Debug\net8.0\RelTransCustomer.Domain.dll
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Persistence\bin\Debug\net8.0\RelTransCustomer.Shared.dll
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Persistence\bin\Debug\net8.0\RelTransCustomer.Application.pdb
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Persistence\bin\Debug\net8.0\RelTransCustomer.Shared.pdb
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Persistence\bin\Debug\net8.0\RelTransCustomer.Domain.pdb
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Persistence\obj\Debug\net8.0\RelTransCustomer.Persistence.csproj.AssemblyReference.cache
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Persistence\obj\Debug\net8.0\RelTransCustomer.Persistence.GeneratedMSBuildEditorConfig.editorconfig
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Persistence\obj\Debug\net8.0\RelTransCustomer.Persistence.AssemblyInfoInputs.cache
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Persistence\obj\Debug\net8.0\RelTransCustomer.Persistence.AssemblyInfo.cs
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Persistence\obj\Debug\net8.0\RelTransCustomer.Persistence.csproj.CoreCompileInputs.cache
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Persistence\obj\Debug\net8.0\RelTransCustomer.Persistence.sourcelink.json
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Persistence\obj\Debug\net8.0\RelTransCustomer.Persistence.csproj.CopyComplete
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Persistence\obj\Debug\net8.0\RelTransCustomer.Persistence.dll
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Persistence\obj\Debug\net8.0\refint\RelTransCustomer.Persistence.dll
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Persistence\obj\Debug\net8.0\RelTransCustomer.Persistence.pdb
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Persistence\obj\Debug\net8.0\ref\RelTransCustomer.Persistence.dll

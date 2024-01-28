@@ -17,6 +17,8 @@ using RelTransCustomer.Application.Contracts.Repositories;
 using RelTransCustomer.Shared.Models;
 using RelTransCustomer.Persistence.Repository;
 using RelTransCustomer.Application.DTOs.Customer;
+using System.Web;
+using System;
 
 namespace RelTransCustomer.Identity.Services;
 
@@ -139,6 +141,16 @@ public class AccountService : IAccountService
                 else if (request.MemberType == "Buyer")
                     await _userManager.AddToRoleAsync(user, "Buyer");
 
+                var verificationUri = await SendVerificationEmail(user, origin);
+
+                Uri uri = new Uri(verificationUri);
+                string queryString = uri.Query;
+
+                // Parse the query string
+                var queryParams = HttpUtility.ParseQueryString(queryString);
+
+                string code = queryParams["code"];
+
                 Customer customer = new Customer
                 {
                     MemberType = request.MemberType,
@@ -151,12 +163,11 @@ public class AccountService : IAccountService
                     Surname = request.Surname,
                     UserId = user.Id,
                     CreatedBy = "Admin",
-                    CreatedDate = DateTime.Now
+                    CreatedDate = DateTime.Now,
+                    Code = code,
                 };
 
                 await _customerRepositoryAsync.AddCustomer(customer);
-
-                var verificationUri = await SendVerificationEmail(user, origin);
                 ////TODO: Attach Email Service here and configure it via appsettings
                 await _emailService.SendAsync(new Application.DTOs.Email.EmailRequest 
                 { 
@@ -165,6 +176,8 @@ public class AccountService : IAccountService
                     Body = $"Please check the new customer user for {user.Email} you can approve the customer by visiting this URL {verificationUri}",
                     Subject = "Confirm Registration" 
                 });
+
+                
                 return new Response<string>(user.Id, message: $"Customer Registered. Pending verification. You will receive an email once verification is successfully.");
 
                 //return new Response<string>(user.Id, message: $"User Registered Sucessfully");
@@ -294,6 +307,58 @@ public class AccountService : IAccountService
             throw new ApiException($"An error occured while confirming {user.Email}.");
         }
     }
+
+    public async Task<Response<string>> ConfirmRegistrationAsync(string userId)
+    {
+        var user = await _userManager.FindByIdAsync(userId);
+        if (user is null) 
+        {
+            throw new ApiException($"User not found {user.Email}.");
+        }
+
+        var customer = await _customerRepositoryAsync.GetCustomer(user.Email, "Pending");
+        if (customer is null)
+        {
+            throw new ApiException($"Customer not found {user.Email}.");
+        }
+
+        var code = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(customer.Code));
+        var result = await _userManager.ConfirmEmailAsync(user, code);
+        if (result.Succeeded)
+        {
+
+            var updateCustomer = new Customer
+            {
+                CreatedDate = DateTime.Now,
+                CreatedBy = "Admin",
+                ContactTelNo = customer.ContactTelNo,
+                AccNo = CreateAccNo(customer.CompanyName),
+                CompanyName = customer.CompanyName,
+                Email = customer.Email,
+                FirstName = customer.FirstName,
+                MemberType = customer.MemberType,
+                Id = customer.Id,
+                Status = "Active",
+                Surname = customer.Surname,
+                UserId = user.Id
+            };
+            await _customerRepositoryAsync.UpdateAsync(updateCustomer);
+
+            await _emailService.SendAsync(new Application.DTOs.Email.EmailRequest
+            {
+                From = _mailSetting.EmailFrom,
+                // To = user.Email ,
+                To = _mailSetting.EmailTo,
+                Body = $"Account Confirmed for {user.Email}. You can now use the /api/Account/authenticate endpoint.",
+                Subject = "Confirm Registration"
+            });
+            return new Response<string>(user.Id, message: $"Account Confirmed for {user.Email}. You can now use the /api/Account/authenticate endpoint.");
+        }
+        else
+        {
+            throw new ApiException($"An error occured while confirming {user.Email}.");
+        }
+    }
     private RefreshToken GenerateRefreshToken(string ipAddress)
     {
         return new RefreshToken
@@ -305,10 +370,51 @@ public class AccountService : IAccountService
         };
     }
 
-    public Task<Response<TokenModel>> RefreshToken(TokenModel tokenModel, string ipAddress)
+    public async Task<Response<TokenModel>> RefreshToken(TokenModel tokenModel, string ipAddress)
     {
-        throw new NotImplementedException();
+        if (tokenModel == null)
+            throw new ApiException($"Invalid client request");
+        string? accessToken = tokenModel.AccessToken;
+        string? refreshToken = tokenModel.RefreshToken;
+        var principal = GetPrincipalFromExpiredToken(accessToken);
+        var username = principal.Identity.Name; //this is mapped to the Name claim by default
+        var user = await _userManager.FindByNameAsync(username);
+        if (user is null || user.RefreshToken != refreshToken || user.RefreshTokenExpiryTime <= DateTime.Now)
+            throw new ApiException($"Invalid client request");
+        var jwtSecurityToken = await GenerateJWToken(user);
+        var newAccessToken = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
+        var newRefreshToken = GenerateRefreshToken(ipAddress);
+        user.RefreshToken = newRefreshToken.Token;
+        user.RefreshTokenExpiryTime = DateTime.Now.AddMinutes(_jwtSettings.DurationInMinutes);
+        await _userManager.UpdateAsync(user);
+        TokenModel response = new TokenModel
+        {
+            AccessToken = newAccessToken,
+            RefreshToken = newRefreshToken.Token
+        };
+        return new Response<TokenModel>(response, $"Refresh token {user.UserName}");
     }
+
+    private ClaimsPrincipal? GetPrincipalFromExpiredToken(string? token)
+    {
+        var tokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateAudience = false,
+            ValidateIssuer = false,
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Key)),
+            ValidateLifetime = false
+        };
+
+        var tokenHandler = new JwtSecurityTokenHandler();
+        var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out SecurityToken securityToken);
+        if (securityToken is not JwtSecurityToken jwtSecurityToken || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
+            throw new SecurityTokenException("Invalid token");
+
+        return principal;
+
+    }
+
     public async Task<Response<string>> DeleteCustomer(int customerId)
     {
         var result = await _customerRepositoryAsync.DeleteCustomer(customerId);
