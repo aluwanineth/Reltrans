@@ -24,6 +24,7 @@ export class UnauthenticatedContentComponent {
 
   get title() {
     const path = this.router.url.split('/')[1];
+    console.log(path);
     switch (path) {
       case 'login-form': return 'Sign In';
       case 'reset-password': return 'Reset Password';

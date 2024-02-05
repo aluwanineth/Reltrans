@@ -1,4 +1,4 @@
-import { Component, NgModule, Output, Input, EventEmitter, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, NgModule, Output, Input, EventEmitter, ViewChild, ElementRef, AfterViewInit, OnDestroy, OnInit } from '@angular/core';
 import { DxTreeViewModule, DxTreeViewComponent, DxTreeViewTypes } from 'devextreme-angular/ui/tree-view';
 
 import * as events from 'devextreme/events';
@@ -8,16 +8,19 @@ import { adminNavigation } from 'src/app/app-navigation';
 import { accountantNavigation } from 'src/app/app-accountant';
 import { buyerNavigation } from 'src/app/app-buyer';
 import { projectManagerNavigation } from 'src/app/app.project.manager';
+import { MenuService } from '../../services/menu.service';
+import { Result } from '../../models/menu.response.results.model';
 
 @Component({
   selector: 'app-side-navigation-menu',
   templateUrl: './side-navigation-menu.component.html',
   styleUrls: ['./side-navigation-menu.component.scss']
 })
-export class SideNavigationMenuComponent implements AfterViewInit, OnDestroy {
+export class SideNavigationMenuComponent implements AfterViewInit, OnDestroy, OnInit {
   @ViewChild(DxTreeViewComponent, { static: true })
   menu!: DxTreeViewComponent;
   userRole: Array<string> = [];
+  menuResults: Result[] = [];
   currentUser: Customer | null = { email: '',firstName: '',surname:'', accNo: '', companyName:'',contactTelNo:'', memberType: [] };
   @Output()
   selectedItemChanged = new EventEmitter<DxTreeViewTypes.ItemClickEvent>();
@@ -44,15 +47,16 @@ export class SideNavigationMenuComponent implements AfterViewInit, OnDestroy {
       } else if (this.userRole.includes('Accountant')) {
         this._items = accountantNavigation.map((item) => ({ ...item, expanded: !this._compactMode }));
       }
-      else if (this.userRole.includes('Buye')) {
+      else if (this.userRole.includes('Buyer')) {
         this._items = buyerNavigation.map((item) => ({ ...item, expanded: !this._compactMode }));
       }
        else if(this.userRole.includes('Project Manager')){
          this._items = projectManagerNavigation.map((item) => ({ ...item, expanded: !this._compactMode }));
       }
+      
     }
-
     return this._items;
+   
   }
 
   private _compactMode = false;
@@ -74,13 +78,27 @@ export class SideNavigationMenuComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  constructor(private elementRef: ElementRef, private authenticationService: AuthenticationService) { 
+  constructor(private elementRef: ElementRef, private authenticationService: AuthenticationService,
+    private menuService: MenuService) { 
     this.authenticationService.user.subscribe(x => this.currentUser = x);
 
     if (this.currentUser) {
       this.userRole =  this.currentUser.memberType;
-      console.log('role: ', this.userRole);
      }
+  }
+  ngOnInit(): void {
+    this.getMenuData(this.userRole[0]);
+  }
+
+  getMenuData(menuType: string): void {
+    this.menuService.getMenuByType(menuType).subscribe(
+      (data) => {
+        this.menuResults = data.result;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
 
   onItemClick(event: DxTreeViewTypes.ItemClickEvent) {

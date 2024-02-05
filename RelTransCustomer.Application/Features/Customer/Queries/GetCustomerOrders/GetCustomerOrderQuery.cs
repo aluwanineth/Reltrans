@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RelTransCustomer.Application.Features.Customer.Queries.GetCustomerOrders
 {
-    public class GetCustomerOrderQuery : IRequest<Response<IEnumerable<CustomerOrders>>>
+    public class GetCustomerOrderQuery : IRequest<Response<IEnumerable<OpenOrderItem>>>
     {
         public string AccNo { get; set; }
     }

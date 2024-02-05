@@ -1,0 +1,58 @@
+<h2 class="content-block">Audit Trail</h2>
+<div class="content-block">
+  <div class="dx-card responsive-paddings">
+    <dx-accordion>
+      <dxi-item title="Active Customers">
+        <dx-data-grid id="gridContainer" [dataSource]="activeData" [allowColumnReordering]="true"[columnAutoWidth]="true" [wordWrapEnabled]="true" [showBorders]="true">
+
+          <dxi-column dataField="firstName"></dxi-column>
+          <dxi-column dataField="surname"></dxi-column>
+          <dxi-column dataField="accNo"></dxi-column>
+          <dxi-column dataField="companyName"></dxi-column>
+          <dxi-column dataField="email"></dxi-column>
+          <dxi-column dataField="contactTelNo"></dxi-column>
+          <dxi-column dataField="memberType"></dxi-column>
+          <dxi-column dataField="status"></dxi-column>
+
+          <dxo-search-panel [visible]="true"></dxo-search-panel>
+          <dxo-paging [pageSize]="10"></dxo-paging>
+          <dxo-group-panel [visible]="true"></dxo-group-panel>
+          <dxo-grouping #expand [autoExpandAll]="true"></dxo-grouping>
+        </dx-data-grid>
+
+      </dxi-item>
+      <dxi-item title="Pending Registration Customers">
+        <dx-data-grid id="gridContainer"
+            keyExpr="id" 
+            [dataSource]="pendingData" 
+            [allowColumnReordering]="true" 
+            [columnAutoWidth]="true" 
+            [wordWrapEnabled]="true"
+            [showBorders]="true"
+         >
+
+          <dxi-column dataField="firstName"></dxi-column>
+          <dxi-column dataField="surname"></dxi-column>
+          <dxi-column dataField="accNo"></dxi-column>
+          <dxi-column dataField="companyName"></dxi-column>
+          <dxi-column dataField="email"></dxi-column>
+          <dxi-column dataField="contactTelNo"></dxi-column>
+          <dxi-column dataField="memberType"></dxi-column>
+          <dxi-column dataField="status"></dxi-column>
+          <dxi-column type="buttons" [width]="110">
+            <dxi-button
+              hint="Activate Customer"
+              icon="selectall"
+              [onClick]="onActivteCustomer"
+            ></dxi-button>
+          </dxi-column>
+
+          <dxo-search-panel [visible]="true"></dxo-search-panel>
+          <dxo-paging [pageSize]="10"></dxo-paging>
+          <dxo-group-panel [visible]="true"></dxo-group-panel>
+          <dxo-grouping #expand [autoExpandAll]="true"></dxo-grouping>
+        </dx-data-grid>
+      </dxi-item>
+    </dx-accordion>
+  </div>
+</div>

@@ -12,10 +12,10 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { ErrorInterceptor, JwtInterceptor, appInitializer } from './_helpers';
 import { AuthenticationService } from './shared/services/account.service';
 
+
 @NgModule({
   declarations: [
-    AppComponent
-    
+    AppComponent  
   ],
   imports: [
     BrowserModule,

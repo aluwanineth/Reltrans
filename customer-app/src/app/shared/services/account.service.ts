@@ -13,6 +13,10 @@ export class AuthenticationService {
     private tokenSubject: BehaviorSubject<AuthResponse | null>;
     public token: Observable<AuthResponse | null>;
 
+    private _lastAuthenticatedPath: string = '/home';
+      set lastAuthenticatedPath(value: string) {
+    this._lastAuthenticatedPath = value;
+  }
     httpOptions = {
         headers: new HttpHeaders({
           'Content-Type': 'application/json'
@@ -40,7 +44,7 @@ export class AuthenticationService {
 
 
     login(email: string, password: string) {
-        return this.http.post<any>(`${environment.apiUrl}Account/login`, { email, password }, { withCredentials: true })
+        return this.http.post<any>(`${environment.apiUrl}/api/Account/login`, { email, password }, { withCredentials: true })
             .pipe(map(user => {
                 this.userSubject.next(user.result.customer);
                 this.tokenSubject.next(user);
@@ -52,7 +56,7 @@ export class AuthenticationService {
 
     register(customer: any): Observable<any> {
         console.log(customer);
-        return this.http.post<any>(`${environment.apiUrl}Account/registerAdministrator`, customer, this.httpOptions)
+        return this.http.post<any>(`${environment.apiUrl}/api/Account/registerAdministrator`, customer, this.httpOptions)
         // tslint:disable-next-line: no-shadowed-variable
         .pipe(
           retry(1),
@@ -63,14 +67,14 @@ export class AuthenticationService {
     logout() {
         console.log('logout')
        // this.http.post<any>(`${environment.apiUrl}/users/revoke-token`, {}, { withCredentials: true }).subscribe();
-       // this.stopRefreshTokenTimer();
+      // this.stopRefreshTokenTimer();
         this.userSubject.next(null);
-        console.log(JSON.stringify(this.userSubject.value));
+        this.tokenSubject.next(null);
         this.router.navigate(['/login-form']);
     }
 
     refreshToken() {
-        return this.http.post<any>(`${environment.apiUrl}/Account/refresh`, {}, { withCredentials: true })
+        return this.http.post<any>(`${environment.apiUrl}/api/Account/refresh`, {}, { withCredentials: true })
             .pipe(map((user) => {
                 this.userSubject.next(user);
               //  this.startRefreshTokenTimer();
@@ -80,7 +84,7 @@ export class AuthenticationService {
 
     registerCustomer(customer: any): Observable<any> {
         console.log(customer);
-        return this.http.post<any>(`${environment.apiUrl}Account/registerCustomer`, customer, this.httpOptions)
+        return this.http.post<any>(`${environment.apiUrl}/api/Account/registerCustomer`, customer, this.httpOptions)
         // tslint:disable-next-line: no-shadowed-variable
         .pipe(
           retry(1),
@@ -88,9 +92,14 @@ export class AuthenticationService {
         );
       }
 
+      confirmRegistration(userId: string) {
+        console.log('confinr', userId);
+        return this.http.post(`${environment.apiUrl}/api/Account/confirm-Registration?userId=${userId}`,{}, this.httpOptions);
+      }
+
       assignRoles(roles: any): Observable<any> {
         console.log(roles);
-        return this.http.post<any>(`${environment.apiUrl}Account/assignRoles`, roles, this.httpOptions)
+        return this.http.post<any>(`${environment.apiUrl}/api/Account/assignRoles`, roles, this.httpOptions)
         // tslint:disable-next-line: no-shadowed-variable
         .pipe(
           retry(1),
@@ -100,7 +109,7 @@ export class AuthenticationService {
 
       removeRoles(roles: any): Observable<any> {
         console.log(roles);
-        return this.http.post<any>(`${environment.apiUrl}Account/removeRoles`, roles, this.httpOptions)
+        return this.http.post<any>(`${environment.apiUrl}/api/Account/removeRoles`, roles, this.httpOptions)
         // tslint:disable-next-line: no-shadowed-variable
         .pipe(
           retry(1),
@@ -110,22 +119,47 @@ export class AuthenticationService {
 
 
     delete(id: number) {
-        return this.http.delete(`${environment.apiUrl}Account/delete/${id}`);
+        return this.http.delete(`${environment.apiUrl}/api/Account/delete/${id}`);
     }
 
     update(request: any): Observable<any>{
-      const data = {
-        "firstName": request.firstName,
-        "surname": request.surname,
-        "contactTelNo": request.contactTelNo,
-        "memberType": request.memberType,  
-        "email": request.email
-      };
-      return this.http.put<any>(`${environment.apiUrl}Account/update`, data, this.httpOptions)
+      return this.http.put<any>(`${environment.apiUrl}/api/Account/update`, request, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.errorHandl)
       );
+  }
+
+  async changePassword(email: string, recoveryCode: string) {
+    try {
+      // Send request
+
+      return {
+        isOk: true
+      };
+    }
+    catch {
+      return {
+        isOk: false,
+        message: "Failed to change password"
+      }
+    }
+  }
+
+  async resetPassword(email: string) {
+    try {
+      // Send request
+
+      return {
+        isOk: true
+      };
+    }
+    catch {
+      return {
+        isOk: false,
+        message: "Failed to reset password"
+      };
+    }
   }
 
     // helper methods
@@ -145,7 +179,7 @@ export class AuthenticationService {
 
     // private startRefreshTokenTimer() {
     //     // parse json object from base64 encoded jwt token
-    //     const jwtBase64 = this.userValue!.JWToken!.split('.')[1];
+    //     const jwtBase64 = this.tokenValue!.result.jwToken!.split('.')[1];
     //     const jwtToken = JSON.parse(atob(jwtBase64));
 
     //     // set a timeout to refresh the token a minute before it expires

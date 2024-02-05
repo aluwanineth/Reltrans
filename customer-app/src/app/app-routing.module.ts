@@ -5,11 +5,16 @@ import { AuthGuardService } from './shared/services';
 import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { TasksComponent } from './pages/tasks/tasks.component';
-import { DxButtonModule, DxDataGridModule, DxDropDownBoxModule, DxFormModule, DxLoadIndicatorModule, DxLoadPanelModule, DxPopupModule, DxTreeViewComponent, DxTreeViewModule } from 'devextreme-angular';
+import { DxAccordionModule, DxBoxModule, DxButtonModule, DxChartModule, DxDataGridModule, DxDateBoxModule, DxDropDownBoxModule, DxFormModule, DxListModule, DxLoadIndicatorModule, DxLoadPanelModule, DxPopupModule, DxSelectBoxModule, DxTabPanelModule, DxTemplateModule, DxTextAreaModule, DxTreeViewComponent, DxTreeViewModule, DxValidationSummaryModule } from 'devextreme-angular';
 import { AuthGuard } from './_helpers';
 import { CustomerUserComponent } from './pages/customer-user/customer-user.component';
 import { CustomerRegisterComponent } from './pages/customer-register/customer-register.component';
 import { CustomerOrderComponent } from './pages/customer-order/customer-order.component';
+import { CustomerListComponent } from './pages/customer-list/customer-list.component';
+import { CustomerOrderHistoryComponent } from './pages/customer-order-history/customer-order-history.component';
+import { CustomerInvoiceComponent } from './pages/customer-invoice/customer-invoice.component';
+import { CustomerStatementComponent } from './pages/customer-statement/customer-statement.component';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -47,7 +52,11 @@ const routes: Routes = [
   },
   { path: 'user-data', component: CustomerUserComponent, canActivate: [AuthGuard] },
   { path: 'create-customer', component: CustomerUserComponent, canActivate: [AuthGuard] },
-  { path: 'customer-orders', component: CustomerOrderComponent, canActivate: [AuthGuard] },
+  { path: 'open-orders', component: CustomerOrderComponent, canActivate: [AuthGuard] },
+  { path: 'customer-list', component: CustomerListComponent, canActivate: [AuthGuard] },
+  { path: 'customer-order-history', component: CustomerOrderHistoryComponent, canActivate: [AuthGuard] },
+  { path: 'customer-invoice', component: CustomerInvoiceComponent, canActivate: [AuthGuard] },
+  { path: 'customer-statement', component: CustomerStatementComponent, canActivate: [AuthGuard] },
   
   {
     path: '**',
@@ -64,9 +73,22 @@ const routes: Routes = [
     DxDropDownBoxModule,
     DxTreeViewModule,
     DxDataGridModule,
-    DxLoadPanelModule],
+    DxLoadPanelModule,
+    DxValidationSummaryModule,
+    DxSelectBoxModule,
+    DxChartModule,
+    DxAccordionModule,
+    DxTabPanelModule,
+    DxTextAreaModule,
+    DxBoxModule,
+    FormsModule,
+    DxListModule,
+    DxTemplateModule,
+    DxTabPanelModule,
+    DxDateBoxModule,
+    DxTreeViewModule],
     
-  providers: [AuthGuardService],
+  providers: [AuthGuard],
   exports: [RouterModule],
   declarations: [
     HomeComponent,
@@ -74,8 +96,11 @@ const routes: Routes = [
     TasksComponent,
     CustomerUserComponent,
     CustomerRegisterComponent,
-    CustomerOrderComponent
-
+    CustomerOrderComponent,
+    CustomerListComponent,
+    CustomerStatementComponent,
+    CustomerInvoiceComponent,
+    CustomerOrderHistoryComponent
   ]
 })
 export class AppRoutingModule { }

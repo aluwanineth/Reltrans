@@ -59,8 +59,9 @@ export class CustomerUserComponent implements OnInit {
   }
 
   onRowUserUpdated(e: any) {
-    if (e.data.id === 1) {
-      Swal(
+    let memberType: string[] = [e.data.memberType];
+    if (e.data.memberType === 'Administrator') {
+      Swal.fire(
         '',
         'You cant update system admin'
         ,
@@ -70,17 +71,18 @@ export class CustomerUserComponent implements OnInit {
     } else {
     this.customer.push(e.data);
     const customerData = {
+      id: e.data.id,
       firstName: e.data.firstName,
       surname: e.data.surname,
       contactTelNo: e.data.contactTelNo,
-      memberType: e.data.memberType,
+      memberType: memberType,
       email: e.data.email
     };
     console.log(JSON.stringify(customerData));
     this.authService.update(customerData)
     .pipe(first())
     .subscribe( data => {
-      Swal(
+      Swal.fire(
         '',
         'Successfully Updated',
         'success'
@@ -88,7 +90,7 @@ export class CustomerUserComponent implements OnInit {
     }, error => {
       console.log(error);
      // notify({ message: error, width: 300, shading: true }, 'error', 5000);
-      Swal(
+      Swal.fire(
         '',
         error || 'Internal Server Error'
         ,
@@ -98,11 +100,11 @@ export class CustomerUserComponent implements OnInit {
   }
   }
 
-  onRowRemoving(e: any) {
+  onDeleteCustomer(e: any) {
     const id = e.data.id;
-    const email  = e.data.email;
-    if (e.data.id === 1) {
-      Swal(
+    const username  = e.data.email;
+    if (e.data.id === 'Administrator') {
+      Swal.fire(
         '',
         'You cant delete system admin'
         ,
@@ -110,34 +112,38 @@ export class CustomerUserComponent implements OnInit {
       );
       this.loadData(this.companyName);
     } else {
-      // Swal.({
-      //   title: "Are you sure?",
-      //   text: "Are you sure that you want to leave this page?",
-      //   icon: "warning",
-      //   dangerMode: true,
-      // })
-      // .then(willDelete => {
-      //   if (willDelete) {
-      //     this.authService.delete(id)
-      //     .pipe(first())
-      //       .subscribe( data => {
-      //         this.swal(
-      //           'Deleted!',
-      //           'User has been deleted.',
-      //           'success'
-      //         );
-      //       }, error => {
-      //         console.log(error);
-      //         // notify({ message: error, width: 300, shading: true }, 'error', 5000);
-      //         Swal(
-      //           '',
-      //           error || 'Internal Server Error'
-      //           ,
-      //           'error'
-      //         );
-      //       });
-      //   }
-      // });
+      Swal.fire({
+        title: 'Are you sure? ',
+        text: 'You want to delete ' + username + ' username?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.value) {
+          this.authService.delete(id)
+                .pipe(first())
+                  .subscribe( data => {
+                    const audit = {
+                      action: 'Deleting user (' + username + ')',
+                      actionId: e.data.username,
+                      createdDate: Date.now(),
+                      username: this.currentUser.username,
+                      type: 'User'
+                    };
+                  }, error => {
+                    console.log(error);
+                    // notify({ message: error, width: 300, shading: true }, 'error', 5000);
+                    Swal.fire(
+                      '',
+                      error || 'Internal Server Error'
+                      ,
+                      'error'
+                    );
+                  });
+        }
+      });
     }
   }
 }

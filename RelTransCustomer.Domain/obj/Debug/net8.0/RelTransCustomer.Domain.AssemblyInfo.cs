@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RelTransCustomer.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+731fc7f837a35ebe7cc627a7fee91df99cbbc520")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+313d418070f23407509bf321f2043a9d7bdfda4a")]
 [assembly: System.Reflection.AssemblyProductAttribute("RelTransCustomer.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RelTransCustomer.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

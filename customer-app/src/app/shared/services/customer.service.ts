@@ -13,14 +13,30 @@ export class CustomerService {
     };
 
     getCustomerByCompanyName(companyName: string) {
-        return this.http.get<any>(`${environment.customerApi}/getCustomers?companyName=${companyName}`);
+        return this.http.get<any>(`${environment.apiUrl}/api/v1.0/Customers/getCustomers?companyName=${companyName}`);
     }
 
+    getCustomers() {
+      return this.http.get<any>(`${environment.apiUrl}/api/v1.0/Customers/getAllCustomers`);
+  }
+
     getCustomerByEmail(email: string) {
-        return this.http.get<any>(`${environment.customerApi}/getCustomerByEmail?email=${email}`);
+        return this.http.get<any>(`${environment.apiUrl}/api/v1.0/Customers/getCustomerByEmail?email=${email}`);
     }
 
     getCustomerOrder(accNo: string) {
-        return this.http.get<any>(`${environment.customerApi}/getCustomerOrders?accNo=${accNo}`);
+        return this.http.get<any>(`${environment.apiUrl}/api/v1.0/Customers/getCustomerOrders?accNo=${accNo}`);
     }
+
+    getCustomerOrderHistory(accNo: string, startDate:any) {
+      return this.http.get<any>(`${environment.apiUrl}/api/v1.0/Customers/getCustomerOrderHistory?accountNo=${accNo}&startDate=${startDate}`);
+  }
+
+  getCustomerOrderInvoice(accNo: string) {
+    return this.http.get<any>(`${environment.apiUrl}/api/v1.0/Customers/getCustomerOrders?accNo=${accNo}`);
+  }
+
+  getCustomerStatement(accNo: string, startDate: any, endDate: any) {
+    return this.http.get<any>(`${environment.apiUrl}/api/v1.0/Customers/getCustomerStatement?company=${accNo}&endDate=${endDate}&startDate=${startDate}`);
+  }
 }

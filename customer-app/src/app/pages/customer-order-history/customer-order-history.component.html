@@ -1,0 +1,65 @@
+<h2 class="content-block">Orders History</h2>
+<div class="content-block">
+    <div class="dx-card responsive-paddings">
+        <div class="row mb-2">
+            <div class="col">
+                <div class="input-group">
+                    <dx-date-box
+                        placeholder="10/16/2018"
+                        [showClearButton]="true"
+                        [useMaskBehavior]="true"
+                        displayFormat="yyyy-MM-dd"
+                        type="date"
+                        [value]="startDate"
+                        [inputAttr]="{ 'aria-label': 'Date' }"
+                        (onValueChanged)="onValueChanged($event)">
+                    ></dx-date-box>
+                  </div>
+            </div>
+            <div class="col">
+                
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col">
+                <dx-button class="button-info" text="Get orders" icon="search"type="default" (onClick)="search()"></dx-button>
+            </div>
+          </div>
+          <dx-data-grid id="gridContainer" class="dx-card wide-card" [dataSource]="dataSource" [focusedRowEnabled]="true"
+      [focusedRowIndex]="0" [columnAutoWidth]="true" [wordWrapEnabled]="true" keyExpr="id" [showBorders]="true"
+      [columnHidingEnabled]="true" (onExporting)="onExporting($event)">
+
+      <dxo-paging [pageSize]="10"></dxo-paging>
+      <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
+      <dxo-filter-row [visible]="true"></dxo-filter-row>
+      <dxi-column dataField="captureDate" column="Capture Date">
+      </dxi-column>
+      <dxi-column dataField="yourRef" column="Reference">
+      </dxi-column>
+      <dxi-column dataField="jobNo" column="Job No">
+        </dxi-column>
+        <dxi-column dataField="specNo" column="Spec No">
+        </dxi-column>
+        <dxi-column dataField="description" column="Description">
+        </dxi-column>
+        <dxi-column dataField="qty" column="Quatity">
+          </dxi-column>
+          <dxi-column dataField="unitCost" column="Unit Cost">
+        </dxi-column>
+        <dxi-column dataField="total" column="Total">
+          </dxi-column>
+          <dxi-column dataField="discountPerc" column="Discount %">
+          </dxi-column>
+          <dxi-column dataField="netAmount" column="Net Amount">
+          </dxi-column>
+          <dxi-column dataField="status" column="status">
+            </dxi-column>
+      <dxo-export [enabled]="true" [allowExportSelectedData]="true"></dxo-export>
+    </dx-data-grid>
+  </div>
+</div>
+<dx-load-panel #loadPanel shadingColor="rgba(0,0,0,0.4)" [position]="{ of: '#gridContainer' }"
+[(visible)]="loadingVisible" [showIndicator]="true" [showPane]="true" [shading]="true"
+[closeOnOutsideClick]="false">
+</dx-load-panel>
+

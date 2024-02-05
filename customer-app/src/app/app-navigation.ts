@@ -2,58 +2,51 @@ export const adminNavigation = [
   {
     text: 'Home',
     path: '/home',
-    icon: 'home'
+    icon: 'assets/img/icons8-home.svg'
   },
   {
     text: 'Administrator',
-    badge: 12,
-    icon: 'preferences',
+    icon: 'assets/img/icons8-settings.svg',
+    path:'',
     items: [
       {
-        text: 'Customer Managment',
+        text: 'Customers',
         path: '/user-data',
-        icon: 'user',
+        icon: 'assets/img/icons8-myspace.svg',
+      },
+      {
+        text: 'Customers',
+        path: '/customer-list',
+        icon: 'assets/img/data-collection.svg'
       },
     ],
   },
   {
     text: 'Orders',
-    badge: 12,
     icon: 'cart',
     items: [
       {
-        text: 'Customer Oders',
-        path: '/customer-orders',
-        icon: 'ordersbox',
+        text: 'Open Orders',
+        path: '/open-orders',
+        icon: 'assets/img/quaterlyData.svg',
       },
       {
         text: 'Order History',
-        path: '/order-history',
-        icon: 'ordersbox',
-      }
+        path: '/customer-order-history',
+        icon: 'assets/img/JIT.svg'
+      },
     ],
   },
   {
     text: 'Accounts',
-    badge: 12,
-    icon: 'ordersbox',
+    icon: 'money',
     items: [
       {
-        text: 'Account Statements',
-        path: '/account-statement',
-        icon: 'sortdowntext',
-      },
-      {
-        text: 'Invoices',
-        path: '/invoice',
-        icon: 'exportpdf',
-      },
-      {
-        text: 'Transaction History',
-        path: '/transaction-history',
-        icon: '',
-      },
-    ],
+        text: 'Account Statement',
+        path: '/customer-statement',
+        icon: 'assets/img/DailyData.svg',
+      }
+    ]
   },
   {
     text: 'GA',

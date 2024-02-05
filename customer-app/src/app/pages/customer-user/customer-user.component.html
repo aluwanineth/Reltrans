@@ -5,13 +5,11 @@
     keyExpr="id"
     [showBorders]="true"
     (onRowUpdated)="onRowUserUpdated($event)"
-    (onRowRemoving)="onRowRemoving($event)"
     [focusedRowEnabled]="true">
 
     <dxo-editing
         mode="popup"
         [allowUpdating]="true"
-        [allowDeleting]="true"
         [selectTextOnEditStart]="true"
         [useIcons]="true">
         <dxo-popup
@@ -69,7 +67,11 @@
     </dxi-column>
     <dxi-column type="buttons" [width]="110">
         <dxi-button name="edit"></dxi-button>
-        <dxi-button name="delete"></dxi-button>
+        <dxi-button
+        hint="Activate Customer"
+        icon="delete"
+        [onClick]="onDeleteCustomer"
+      ></dxi-button>
         <dxi-button
           hint="Clone"
           icon="copy"

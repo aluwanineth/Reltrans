@@ -15,19 +15,18 @@ namespace RelTransCustomer.Persistence.Repository;
 public class CustomerRepositoryAsync : GenericRepositoryAsync<Customer>, ICustomerRepositoryAsync
 {
     private readonly DbSet<Customer> _customer;
-    private readonly IConfiguration _configuration;
-    private readonly string connectionString;
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly RoleManager<IdentityRole> _roleManager;
-    public CustomerRepositoryAsync(ApplicationDbContext dbContext, IConfiguration configuration,
+    private readonly ApplicationDbContext _dbContext;
+
+    public CustomerRepositoryAsync(ApplicationDbContext dbContext,
         UserManager<ApplicationUser> userManager,
         RoleManager<IdentityRole> roleManager) : base(dbContext)
     {
-        _configuration = configuration;
         _customer = dbContext.Set<Customer>();
-        connectionString = _configuration.GetConnectionString("DefaultConnection");
         _roleManager = roleManager;
         _userManager = userManager;
+        _dbContext = dbContext;
     }
 
     public async Task AddCustomer(Customer model)
@@ -65,85 +64,17 @@ public class CustomerRepositoryAsync : GenericRepositoryAsync<Customer>, ICustom
         };
     }
 
-    public async Task<IEnumerable <CustomerOrders>> GetCustomerOrders(string accNo)
+    public async Task<IEnumerable <OpenOrderItem>> GetCustomerOrders(string accNo)
     {
-        List<CustomerOrders> results = new List<CustomerOrders>();
-
-        using (var connection = new SqlConnection(connectionString))
+        var parameters = new[]
         {
-            await connection.OpenAsync();
+            new SqlParameter("@AccNo", accNo)
+        };
 
-            string query = @"SELECT JobNo,
-                                       SpecNo,
-                                       Description,
-                                       Qty,
-                                       OrderDate,
-                                       (SELECT MAX(Discipline) 
-                                        FROM Timecost.dbo.TaskCategory TC 
-                                        WHERE TC.Category = Q1.Category) AS Stage,
-                                       Progress,
-                                       PredictDate
-                                FROM (
-                                    SELECT V.AccNo,
-                                           V.Customer,
-                                           V.JobNo,
-                                           V.SpecNo,
-                                           V.Description,
-                                           V.Qty,
-                                           V.OrderDate,
-                                           V.PredictDate,
-                                           V.Progress,
-                                           T.JobDesc AS Task,
-                                           T.Status,
-                                           T.Date,
-                                           (SELECT Category 
-                                            FROM Timecost.dbo.TaskDetails TD 
-                                            WHERE TD.TaskName = T.JobDesc) AS Category
-                                    FROM Timecost.dbo.ProdPlanView V
-                                    LEFT JOIN (
-                                        SELECT JobNo, 
-                                               Date, 
-                                               JobDesc, 
-                                               Status, 
-                                               max_Date = MIN(date) OVER (PARTITION BY JobNo) 
-                                        FROM Timecost.dbo.Tasks
-                                    ) AS T ON T.JobNo = V.JobNo
-                                    WHERE V.AccNo = @AccNo
-                                      AND (T.Status <> 'ALL' AND T.Status <> 'DON')
-                                      AND T.Jobdesc NOT LIKE '%rework'
-                                ) Q1
-                                ORDER BY JobNo, PredictDate";
-
-            using (SqlCommand command = new SqlCommand(query, connection))
-            {
-                // Add parameters if needed
-                command.Parameters.AddWithValue("@AccNo", accNo);
-
-                using (var reader = await command.ExecuteReaderAsync())
-                {
-                    while (await reader.ReadAsync())
-                    {
-                        int i = 1;
-                        CustomerOrders result = new CustomerOrders
-                        {
-                            Id = i++,
-                            JobNo = reader["JobNo"].ToString(),
-                            SpecNo = reader["SpecNo"].ToString(),
-                            Description = reader["Description"].ToString(),
-                            Qty = Convert.ToInt32(reader["Qty"]),
-                            OrderDate = Convert.ToDateTime(reader["OrderDate"]),
-                            PredictDate = Convert.ToDateTime(reader["PredictDate"]),
-                            Progress = reader["Progress"].ToString() + "%",
-                            Stage = reader["Stage"].ToString(),
-                        };
-
-                        results.Add(result);
-                    }
-                }
-            }
-        }
-
-        return results;
+        var openOrders = await _dbContext.OpenOrders
+                                 .FromSqlRaw("EXEC SPOpenOrdersByAccNo @AccNo", parameters)
+                                 .ToListAsync();
+        return openOrders;
     }
 
     public async Task<IEnumerable<Customer>> GetCuatomersByCompanyName(string companyName)
@@ -249,6 +180,57 @@ public class CustomerRepositoryAsync : GenericRepositoryAsync<Customer>, ICustom
             throw new ApiException("Error assigning role to a customer: " + ex.Message);
         }
         return result;
+    }
+
+    public async Task<List<CustomerStatement>> GetCustomerStatement(DateTime startDate, DateTime endDate, string company)
+    {
+        var parameters = new[]
+            {
+                new SqlParameter("@Coy", company),
+                new SqlParameter("@StartDate", startDate),
+                new SqlParameter("@EndDate", endDate)
+            };
+
+        var statements = await _dbContext.CustomerStatements
+                                 .FromSqlRaw("EXEC SPGetCustomerStatements @Coy, @StartDate, @EndDate", parameters)
+                                 .ToListAsync();
+
+        return statements;
+    }
+
+    public async Task<List<InvoiceDetail>> GetCustomerInvoiceDetail(string invoiceToView, string accNo)
+    {
+        var parameters = new[]
+        {
+            new SqlParameter("@InvToView", invoiceToView),
+            new SqlParameter("@AccNo", accNo)
+        };
+        try
+        {
+            var invoiceDetails = await _dbContext.InvoiceDetails
+                                       .FromSqlRaw("EXEC SPViewInvoice @InvToView, @AccNo", parameters)
+                                       .ToListAsync();
+            return invoiceDetails;
+        }
+        catch (ApiException ex) 
+        {
+            throw new ApiException(ex.Message);
+        }
+    }
+
+    public async Task<List<OrderHistoryItem>> GetCustomerOrderHistory(DateTime startDate, string accountNumber)
+    {
+        var parameters = new[]
+        {
+            new SqlParameter("@StartDate", startDate),
+            new SqlParameter("@AccNo", accountNumber)
+        };
+
+        var orderHistory = await _dbContext.OrderHistory
+                                 .FromSqlRaw("EXEC GetOrderHistory @StartDate, @AccNo", parameters)
+                                 .ToListAsync();
+
+        return orderHistory;
     }
 }
 

@@ -1,0 +1,39 @@
+<h2 class="content-block">Orders History</h2>
+<div class="content-block">
+    <div class="dx-card responsive-paddings">
+        <div class="row">
+            <div class="col-4">
+                <dx-date-box
+                placeholder="10/16/2018"
+                [showClearButton]="true"
+                [useMaskBehavior]="true"
+                displayFormat="yyyy-MM-dd"
+                type="date"
+                [value]="startDate"
+                [inputAttr]="{ 'aria-label': 'Date' }"
+                (onValueChanged)="onStartDateValueChanged($event)">
+            ></dx-date-box>
+            </div>
+            <div class="col-4">
+                <dx-date-box
+                placeholder="10/16/2018"
+                [showClearButton]="true"
+                [useMaskBehavior]="true"
+                displayFormat="yyyy-MM-dd"
+                type="date"
+                [value]="endDate"
+                [inputAttr]="{ 'aria-label': 'Date' }"
+                (onValueChanged)="onEndDateValueChanged($event)">
+            ></dx-date-box>
+            </div>
+            <div class="col-4">
+                <dx-button class="button-info" text="Get Statement" icon="search"type="default" (onClick)="search()"></dx-button>
+            </div>
+          </div>
+  </div>
+</div>
+<dx-load-panel #loadPanel shadingColor="rgba(0,0,0,0.4)" [position]="{ of: '#gridContainer' }"
+[(visible)]="loadingVisible" [showIndicator]="true" [showPane]="true" [shading]="true"
+[closeOnOutsideClick]="false">
+</dx-load-panel>
+

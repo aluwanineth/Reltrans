@@ -374,8 +374,8 @@ public class AccountService : IAccountService
     {
         if (tokenModel == null)
             throw new ApiException($"Invalid client request");
-        string? accessToken = tokenModel.AccessToken;
-        string? refreshToken = tokenModel.RefreshToken;
+        string accessToken = tokenModel.AccessToken;
+        string refreshToken = tokenModel.RefreshToken;
         var principal = GetPrincipalFromExpiredToken(accessToken);
         var username = principal.Identity.Name; //this is mapped to the Name claim by default
         var user = await _userManager.FindByNameAsync(username);
@@ -395,7 +395,7 @@ public class AccountService : IAccountService
         return new Response<TokenModel>(response, $"Refresh token {user.UserName}");
     }
 
-    private ClaimsPrincipal? GetPrincipalFromExpiredToken(string? token)
+    private ClaimsPrincipal GetPrincipalFromExpiredToken(string token)
     {
         var tokenValidationParameters = new TokenValidationParameters
         {
@@ -490,7 +490,7 @@ public class AccountService : IAccountService
                     CompanyName = request.CompanyName,
                     ContactTelNo = request.ContactTelNo,
                     Email = request.Email,
-                    Status = "Pending",
+                    Status = "Active",
                     Surname = request.Surname,
                     UserId = user.Id,
                     CreatedBy = "Admin",

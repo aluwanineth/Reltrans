@@ -15,6 +15,6 @@ export class AppComponent  {
   constructor(private authService: AuthenticationService, private screen: ScreenService, public appInfo: AppInfoService) { }
 
   isAuthenticated() {
-    return this.authService.userValue;
+    return this.authService.tokenValue;
   }
 }

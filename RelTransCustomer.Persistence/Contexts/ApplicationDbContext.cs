@@ -1,7 +1,9 @@
 ﻿using elTransCustomer.Domain.Commons;
 using Microsoft.EntityFrameworkCore;
 using RelTransCustomer.Application.Contracts.Services;
+using RelTransCustomer.Application.DTOs.Customer;
 using RelTransCustomer.Domain.Entities;
+using System.Reflection.Emit;
 
 namespace RelTransCustomer.Persistence.Contexts
 {
@@ -20,6 +22,10 @@ namespace RelTransCustomer.Persistence.Contexts
         public DbSet<Menu> Menus { get; set; }
         public DbSet<SubMenu> SubMenus { get; set; }
         public DbSet<MenuType> MenuTypes { get; set; }
+        public DbSet<CustomerStatement> CustomerStatements { get; set; }
+        public DbSet<InvoiceDetail> InvoiceDetails { get; set; }
+        public DbSet<OrderHistoryItem> OrderHistory { get; set; }
+        public DbSet<OpenOrderItem> OpenOrders { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
@@ -42,6 +48,10 @@ namespace RelTransCustomer.Persistence.Contexts
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<CustomerStatement>().HasNoKey();
+            builder.Entity<InvoiceDetail>().HasNoKey();
+            builder.Entity<OrderHistoryItem>().HasNoKey();
+            builder.Entity<OpenOrderItem>().HasNoKey();
             //All Decimals will have 18,6 Range
             foreach (var property in builder.Model.GetEntityTypes()
             .SelectMany(t => t.GetProperties())
