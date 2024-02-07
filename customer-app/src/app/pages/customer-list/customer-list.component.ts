@@ -2,12 +2,12 @@ import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { DxDataGridComponent } from 'devextreme-angular';
 import { Customer } from 'src/app/shared/models/customer.model';
-import { AuthenticationService } from 'src/app/shared/services/account.service';
 import { CustomerService } from 'src/app/shared/services/customer.service';
 import { confirm } from 'devextreme/ui/dialog';
 import notify from 'devextreme/ui/notify';
 import { first } from 'rxjs';
 import Swal from 'sweetalert2';
+import { AuthService } from 'src/app/shared/services';
 
 @Component({
   selector: 'app-customer-list',
@@ -25,7 +25,7 @@ export class CustomerListComponent {
   focusedRowKey = 117;
   autoNavigateToFocusedRow = true;
   constructor(private router: Router, private customerService: CustomerService,
-    private authService: AuthenticationService) {
+    private authService: AuthService) {
     this.authService.user.subscribe(x => this.currentUser = x);
     if (this.currentUser) {
     }

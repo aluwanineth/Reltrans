@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot } from '@angular/router';
+import { BehaviorSubject, Observable, catchError, map, retry, throwError } from "rxjs";
+import { Customer } from "../models/customer.model";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { environment } from "src/environments/environment";
+import { AuthResponse } from "../models/login.response.model";
 
 export interface IUser {
   email: string;
@@ -14,53 +19,54 @@ const defaultUser = {
 
 @Injectable()
 export class AuthService {
-  private _user: IUser | null = defaultUser;
-  get loggedIn(): boolean {
-    return !!this._user;
-  }
+  private userSubject: BehaviorSubject<Customer | null>;
+  public user: Observable<Customer | null>;
+  private tokenSubject: BehaviorSubject<AuthResponse | null>;
+  public token: Observable<AuthResponse | null>;
 
   private _lastAuthenticatedPath: string = defaultPath;
   set lastAuthenticatedPath(value: string) {
     this._lastAuthenticatedPath = value;
   }
 
-  constructor(private router: Router) { }
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
+  
+  constructor(
+      private router: Router,
+      private http: HttpClient
+  ) {
+      this.userSubject = new BehaviorSubject<Customer | null>(null);
+      this.user = this.userSubject.asObservable();
 
-  async logIn(email: string, password: string) {
-
-    try {
-      // Send request
-      this._user = { ...defaultUser, email };
-      this.router.navigate([this._lastAuthenticatedPath]);
-
-      return {
-        isOk: true,
-        data: this._user
-      };
-    }
-    catch {
-      return {
-        isOk: false,
-        message: "Authentication failed"
-      };
-    }
+      this.tokenSubject = new BehaviorSubject<AuthResponse | null>(null);
+      this.token = this.tokenSubject.asObservable();
   }
 
-  async getUser() {
-    try {
-      // Send request
+  public get userValue() {
+      return this.userSubject.value;
+  }
 
-      return {
-        isOk: true,
-        data: this._user
-      };
-    }
-    catch {
-      return {
-        isOk: false,
-        data: null
-      };
-    }
+  public get tokenValue() {
+    return this.tokenSubject.value;
+  }
+  get loggedIn(): boolean {
+    return !!this.tokenSubject.value;
+  }
+
+  logIn(email: string, password: string) {
+    return this.http.post<any>(`${environment.apiUrl}/api/Account/login`, { email, password }, { withCredentials: true })
+            .pipe(map(user => {
+                this.userSubject.next(user.result.customer);
+                this.tokenSubject.next(user);
+                console.log(user);
+              //  this.startRefreshTokenTimer();
+              this.router.navigate([this._lastAuthenticatedPath]);
+                return user.result;
+            }));
   }
 
   async createAccount(email: string, password: string) {
@@ -113,9 +119,109 @@ export class AuthService {
   }
 
   async logOut() {
-    this._user = null;
+    this.userSubject.next(null);
+    this.tokenSubject.next(null);
     this.router.navigate(['/login-form']);
   }
+
+  register(customer: any): Observable<any> {
+    console.log(customer);
+    return this.http.post<any>(`${environment.apiUrl}/api/Account/registerAdministrator`, customer, this.httpOptions)
+    // tslint:disable-next-line: no-shadowed-variable
+    .pipe(
+      retry(1),
+      catchError(this.errorHandl)
+    );
+  }
+
+  refreshToken() {
+    return this.http.post<any>(`${environment.apiUrl}/api/Account/refresh`, {}, { withCredentials: true })
+        .pipe(map((user) => {
+            this.userSubject.next(user);
+          //  this.startRefreshTokenTimer();
+            return user;
+        }));
+}
+
+registerCustomer(customer: any): Observable<any> {
+    console.log(customer);
+    return this.http.post<any>(`${environment.apiUrl}/api/Account/registerCustomer`, customer, this.httpOptions)
+    // tslint:disable-next-line: no-shadowed-variable
+    .pipe(
+      retry(1),
+      catchError(this.errorHandl)
+    );
+  }
+
+  confirmRegistration(userId: string) {
+    console.log('confinr', userId);
+    return this.http.post(`${environment.apiUrl}/api/Account/confirm-Registration?userId=${userId}`,{}, this.httpOptions);
+  }
+
+  assignRoles(roles: any): Observable<any> {
+    console.log(roles);
+    return this.http.post<any>(`${environment.apiUrl}/api/Account/assignRoles`, roles, this.httpOptions)
+    // tslint:disable-next-line: no-shadowed-variable
+    .pipe(
+      retry(1),
+      catchError(this.errorHandl)
+    );
+  }
+
+  removeRoles(roles: any): Observable<any> {
+    console.log(roles);
+    return this.http.post<any>(`${environment.apiUrl}/api/Account/removeRoles`, roles, this.httpOptions)
+    // tslint:disable-next-line: no-shadowed-variable
+    .pipe(
+      retry(1),
+      catchError(this.errorHandl)
+    );
+  }
+
+
+delete(id: number) {
+    return this.http.delete(`${environment.apiUrl}/api/Account/delete/${id}`);
+}
+
+update(request: any): Observable<any>{
+  return this.http.put<any>(`${environment.apiUrl}/api/Account/update`, request, this.httpOptions)
+  .pipe(
+    retry(1),
+    catchError(this.errorHandl)
+  );
+}
+
+// helper methods
+errorHandl(error: any) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // Get client-side error
+      errorMessage = error.error.message;
+    } else {
+      // Get server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.title}`;
+    }
+    console.log(errorMessage);
+    return throwError(errorMessage);
+ }
+// private refreshTokenTimeout?: NodeJS.Timeout;
+
+// private startRefreshTokenTimer() {
+//     // parse json object from base64 encoded jwt token
+//     const jwtBase64 = this.tokenValue!.result.jwToken!.split('.')[1];
+//     const jwtToken = JSON.parse(atob(jwtBase64));
+
+//     // set a timeout to refresh the token a minute before it expires
+//     const expires = new Date(jwtToken.exp * 1000);
+//     const timeout = expires.getTime() - Date.now() - (60 * 1000);
+//     this.refreshTokenTimeout = setTimeout(() => this.refreshToken().subscribe(), timeout);
+// }
+
+// private stopRefreshTokenTimer() {
+//     clearTimeout(this.refreshTokenTimeout);
+// }
+
+
 }
 
 @Injectable()
@@ -145,6 +251,7 @@ export class AuthGuardService implements CanActivate {
       this.authService.lastAuthenticatedPath = route.routeConfig?.path || defaultPath;
     }
 
+    console.log(isLoggedIn)
     return isLoggedIn || isAuthForm;
   }
 }

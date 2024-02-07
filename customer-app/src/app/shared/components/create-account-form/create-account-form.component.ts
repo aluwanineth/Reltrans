@@ -6,8 +6,6 @@ import { DxFormModule } from 'devextreme-angular/ui/form';
 import { DxLoadIndicatorModule } from 'devextreme-angular/ui/load-indicator';
 import notify from 'devextreme/ui/notify';
 import { AuthService } from '../../services';
-import { AuthenticationService } from '../../services/account.service';
-import { first } from 'rxjs';
 
 
 @Component({
@@ -19,42 +17,21 @@ export class CreateAccountFormComponent {
   loading = false;
   formData: any = {};
 
-  constructor(private authService: AuthenticationService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   async onSubmit(e: Event) {
     e.preventDefault();
-    //const {firstName, surname, companyName, contactTelNo, email, password } = this.formData;
-    let model = {
-      "firstName": this.formData.firstName,
-      "surname": this.formData.surname,
-      "accNo": this.formData.companyName,
-      "companyName": this.formData.companyName,
-      "contactTelNo": this.formData.contactTelNo,
-      "memberType": "Administrator",
-      "email": this.formData.email,
-      "password": this.formData.password,
-      "confirmPassword": this.formData.confirmedPassword
-    };
-    console.log(JSON.stringify(model));
+    const { email, password } = this.formData;
     this.loading = true;
-    this.authService.register(model)
-        .pipe(first())
-        .subscribe(
-            data => {
-              notify({
-                message: data.result.message,
-                position: {
-                    my: 'center top',
-                    at: 'center top'
-                }
-              }, 'success', 5000);
-              this.router.navigate(['/user-data']);
-            },
-            error => {
-              notify({ message: error.error.Message, width: 300, shading: true }, 'error', 5000);
-            }
-        );
+
+    const result = await this.authService.createAccount(email, password);
     this.loading = false;
+
+    if (result.isOk) {
+      this.router.navigate(['/login-form']);
+    } else {
+      notify(result.message, 'error', 2000);
+    }
   }
 
   confirmPassword = (e: ValidationCallbackData) => {

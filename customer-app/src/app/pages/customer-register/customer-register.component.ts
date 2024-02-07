@@ -5,8 +5,7 @@ import { ValidationCallbackData } from 'devextreme/common';
 import notify from 'devextreme/ui/notify';
 import { first } from 'rxjs';
 import { Customer } from 'src/app/shared/models/customer.model';
-import { AuthenticationService } from 'src/app/shared/services/account.service';
-import { CustomerService } from 'src/app/shared/services/customer.service';
+import { AuthService } from 'src/app/shared/services';
 
 @Component({
   selector: 'app-customer-register',
@@ -28,7 +27,7 @@ export class CustomerRegisterComponent implements OnInit{
   
  
   constructor(private router: Router,
-    private authService: AuthenticationService){
+    private authService: AuthService){
       this.authService.user.subscribe(x => this.currentUser = x);
       this.treeDataSource = 
         [

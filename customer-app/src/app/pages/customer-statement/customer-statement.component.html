@@ -1,4 +1,4 @@
-<h2 class="content-block">Orders History</h2>
+<h2 class="content-block">Customer Statement</h2>
 <div class="content-block">
     <div class="dx-card responsive-paddings">
         <div class="row">
@@ -30,10 +30,52 @@
                 <dx-button class="button-info" text="Get Statement" icon="search"type="default" (onClick)="search()"></dx-button>
             </div>
           </div>
+          <dx-data-grid id="gridContainer" class="dx-card wide-card" [dataSource]="dataSource" [focusedRowEnabled]="true"
+            [focusedRowIndex]="0" [columnAutoWidth]="true" [wordWrapEnabled]="true" keyExpr="id" [showBorders]="true"
+            [columnHidingEnabled]="true" (onExporting)="onExporting($event)">
+
+            <dxo-paging [pageSize]="10"></dxo-paging>
+            <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
+            <dxo-filter-row [visible]="true"></dxo-filter-row>
+
+            <dxi-column dataField="transactionDate" column="Transaction Date"dataType="date">
+            </dxi-column>
+            <dxi-column dataField="ourRef" column="Our Ref">
+            </dxi-column>
+            <dxi-column dataField="yourRef" column="Your Ref">
+              </dxi-column>
+              <dxi-column dataField="transaction" column="Transaction">
+              </dxi-column>
+              <dxi-column dataField="payRef" column="Pay Ref">
+              </dxi-column>
+              <dxi-column dataField="debit" column="Debit" [format]="{ type: 'currency', precision: 2 }">
+                </dxi-column>
+                <dxi-column dataField="credit" column="Credit" [format]="{ type: 'currency', precision: 2 }">
+              </dxi-column>
+              <dxi-column dataField="total" column="Total" >
+                
+                </dxi-column>
+                <dxi-column dataField="discount" column="Discount" [format]="{ type: 'currency', precision: 2 }">
+                </dxi-column>
+                <dxi-column type="buttons" [width]="110">
+                    <dxi-button
+                      hint="View Invoice"
+                      icon="parentfolder"
+                      [onClick]="viewInvoiceOnClick"
+                     
+                    ></dxi-button>
+                  </dxi-column>
+                  
+            <dxo-export [enabled]="true" [allowExportSelectedData]="true"></dxo-export>
+
+          </dx-data-grid>
+          
   </div>
 </div>
 <dx-load-panel #loadPanel shadingColor="rgba(0,0,0,0.4)" [position]="{ of: '#gridContainer' }"
 [(visible)]="loadingVisible" [showIndicator]="true" [showPane]="true" [shading]="true"
-[closeOnOutsideClick]="false">
+[closeOnOutsideClick]="false" >
 </dx-load-panel>
+
+
 

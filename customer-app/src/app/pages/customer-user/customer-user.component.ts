@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { first } from 'rxjs';
-import { AuthenticationService } from 'src/app/shared/services/account.service';
+import { AuthService } from 'src/app/shared/services';
 import { CustomerService } from 'src/app/shared/services/customer.service';
 import Swal from 'sweetalert2';
 
@@ -22,7 +22,7 @@ export class CustomerUserComponent implements OnInit {
 
   
   constructor(private router: Router, private customerService: CustomerService,
-      private authService: AuthenticationService) {
+      private authService: AuthService) {
       this.authService.user.subscribe(x => this.currentUser = x);
       // tslint:disable-next-line: only-arrow-functions
       this.router.routeReuseStrategy.shouldReuseRoute = function() {

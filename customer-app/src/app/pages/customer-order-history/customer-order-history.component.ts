@@ -3,7 +3,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { exportDataGrid } from 'devextreme/excel_exporter';
 import * as ExcelJS from 'exceljs';
 import { saveAs } from 'file-saver';
-import { AuthenticationService } from 'src/app/shared/services/account.service';
+import { AuthService } from 'src/app/shared/services';
 import { CustomerService } from 'src/app/shared/services/customer.service';
 
 @Component({
@@ -22,7 +22,7 @@ export class CustomerOrderHistoryComponent implements OnInit{
   formattedDate: any;
 
   constructor(private router: Router, private customerService: CustomerService,
-    private authService: AuthenticationService) {
+    private authService: AuthService) {
     this.authService.user.subscribe(x => this.currentUser = x);
     // tslint:disable-next-line: only-arrow-functions
     this.router.routeReuseStrategy.shouldReuseRoute = function() {

@@ -13,13 +13,8 @@ export const adminNavigation = [
         text: 'Customers',
         path: '/user-data',
         icon: 'assets/img/icons8-myspace.svg',
-      },
-      {
-        text: 'Customers',
-        path: '/customer-list',
-        icon: 'assets/img/data-collection.svg'
-      },
-    ],
+      }
+    ]
   },
   {
     text: 'Orders',
@@ -39,14 +34,14 @@ export const adminNavigation = [
   },
   {
     text: 'Accounts',
-    icon: 'money',
+    icon: 'cart',
     items: [
       {
-        text: 'Account Statement',
+        text: 'Statement',
         path: '/customer-statement',
-        icon: 'assets/img/DailyData.svg',
+        icon: 'assets/img/quaterlyData.svg',
       }
-    ]
+    ],
   },
   {
     text: 'GA',

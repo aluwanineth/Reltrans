@@ -1,4 +1,4 @@
-export const adminNavigation = [
+export const rtuser = [
     {
       text: 'Home',
       path: '/home',

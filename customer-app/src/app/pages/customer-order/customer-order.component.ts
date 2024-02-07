@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Customer } from 'src/app/shared/models/customer.model';
-import { AuthenticationService } from 'src/app/shared/services/account.service';
+import { AuthService } from 'src/app/shared/services';
 import { CustomerService } from 'src/app/shared/services/customer.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class CustomerOrderComponent {
   loadingVisible: boolean = false;
 
   constructor(private router: Router, private customerService: CustomerService,
-    private authService: AuthenticationService) {
+    private authService: AuthService) {
     this.authService.user.subscribe(x => this.currentUser = x);
     if (this.currentUser) {
       this.accNo =  this.currentUser.accNo;

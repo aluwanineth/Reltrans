@@ -1,1 +1,38 @@
-<p>customer-invoice works!</p>
+<h2 class="content-block">Customer Invoice</h2>
+<div class="content-block">
+    <div class="dx-card responsive-paddings">  
+      <dx-button class="button-info" text="Customer Statement" icon="search"type="default" (onClick)="goBack()"></dx-button>     
+        <dx-data-grid id="gridContainer" class="dx-card wide-card" [dataSource]="dataSource" [focusedRowEnabled]="true"
+        [focusedRowIndex]="0" [columnAutoWidth]="true" [wordWrapEnabled]="true" keyExpr="id" [showBorders]="true"
+        [columnHidingEnabled]="true" (onExporting)="onExporting($event)">
+  
+        <dxo-paging [pageSize]="10"></dxo-paging>
+        <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
+        <dxo-filter-row [visible]="true"></dxo-filter-row>
+        <dxi-column dataField="item" column="Item">
+        </dxi-column>
+        <dxi-column dataField="jobNo" column="Job No">
+          </dxi-column>
+          <dxi-column dataField="yourRef" column="Reference">
+        </dxi-column>
+          <dxi-column dataField="specNo" column="Spec No">
+          </dxi-column>
+          <dxi-column dataField="description" column="Description">
+          </dxi-column>
+          <dxi-column dataField="qty" column="Quatity">
+            </dxi-column>
+          <dxi-column dataField="total" column="Total" [format]="{ type: 'currency', precision: 2 }">
+            </dxi-column>
+            <dxi-column dataField="discountPerc" column="Discount %" [format]="{ type: 'currency', precision: 2 }">
+            </dxi-column>
+            <dxi-column dataField="netAmount" column="Net Amount" [format]="{ type: 'currency', precision: 2 }">
+            </dxi-column>
+        <dxo-export [enabled]="true" [allowExportSelectedData]="true"></dxo-export>
+      </dx-data-grid>
+          
+  </div>
+</div>
+<dx-load-panel #loadPanel shadingColor="rgba(0,0,0,0.4)" [position]="{ of: '#gridContainer' }"
+[(visible)]="loadingVisible" [showIndicator]="true" [showPane]="true" [shading]="true"
+[closeOnOutsideClick]="false">
+</dx-load-panel>

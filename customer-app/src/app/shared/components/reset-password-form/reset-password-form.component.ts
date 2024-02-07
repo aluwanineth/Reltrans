@@ -5,7 +5,6 @@ import { DxFormModule } from 'devextreme-angular/ui/form';
 import { DxLoadIndicatorModule } from 'devextreme-angular/ui/load-indicator';
 import notify from 'devextreme/ui/notify';
 import { AuthService } from '../../services';
-import { AuthenticationService } from '../../services/account.service';
 
 const notificationText = 'We\'ve sent a link to reset your password. Check your inbox.';
 
@@ -18,7 +17,7 @@ export class ResetPasswordFormComponent {
   loading = false;
   formData: any = {};
 
-  constructor(private authService: AuthenticationService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   async onSubmit(e: Event) {
     e.preventDefault();

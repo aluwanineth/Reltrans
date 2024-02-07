@@ -32,8 +32,8 @@ export class CustomerService {
       return this.http.get<any>(`${environment.apiUrl}/api/v1.0/Customers/getCustomerOrderHistory?accountNo=${accNo}&startDate=${startDate}`);
   }
 
-  getCustomerOrderInvoice(accNo: string) {
-    return this.http.get<any>(`${environment.apiUrl}/api/v1.0/Customers/getCustomerOrders?accNo=${accNo}`);
+  getCustomerOrderInvoice(accNo: string, invoiceNo: any) {
+    return this.http.get<any>(`${environment.apiUrl}/api/v1.0/Customers/viewCustomerInvoice?accountNo=${accNo}&invoiceToView=${invoiceNo}`);
   }
 
   getCustomerStatement(accNo: string, startDate: any, endDate: any) {

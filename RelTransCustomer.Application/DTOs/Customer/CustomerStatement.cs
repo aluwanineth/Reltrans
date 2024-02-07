@@ -8,8 +8,8 @@ namespace RelTransCustomer.Application.DTOs.Customer
 {
     public record CustomerStatement
     {
-       // public int Id { get; set; }
-        public DateTime Date { get; set; }
+        public long Id { get; set; }
+        public DateTime TransactionDate { get; set; }
         public string OurRef { get; set; }
         public string YourRef { get; set; }
         public string Transaction { get; set; }

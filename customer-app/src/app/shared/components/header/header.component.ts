@@ -7,7 +7,6 @@ import { DxButtonModule } from 'devextreme-angular/ui/button';
 import { DxToolbarModule } from 'devextreme-angular/ui/toolbar';
 
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../../services/account.service';
 import { Customer } from '../../models/customer.model';
 @Component({
   selector: 'app-header',
@@ -38,15 +37,16 @@ export class HeaderComponent implements OnInit {
     text: 'Logout',
     icon: 'runner',
     onClick: () => {
-      this.authService.logout();
+      this.authService.logOut();
     }
   }];
 
-  constructor(private authService: AuthenticationService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.user =   this.authService.userValue;
   }
+
   toggleMenu = () => {
     this.menuToggle.emit();
   }

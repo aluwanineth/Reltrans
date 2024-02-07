@@ -192,7 +192,7 @@ public class CustomerRepositoryAsync : GenericRepositoryAsync<Customer>, ICustom
             };
 
         var statements = await _dbContext.CustomerStatements
-                                 .FromSqlRaw("EXEC SPGetCustomerStatements @Coy, @StartDate, @EndDate", parameters)
+                                 .FromSqlRaw("EXEC SPGetCustomerStatement @Coy, @StartDate, @EndDate", parameters)
                                  .ToListAsync();
 
         return statements;

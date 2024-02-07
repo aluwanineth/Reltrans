@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "customer-app": {
+    "app-customer": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -39,7 +39,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/customer-app",
+            "outputPath": "dist/app-customer",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -96,10 +96,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "customer-app:build:production"
+              "browserTarget": "app-customer:build:production"
             },
             "development": {
-              "browserTarget": "customer-app:build:development"
+              "browserTarget": "app-customer:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -107,7 +107,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "customer-app:build"
+            "browserTarget": "app-customer:build"
           }
         },
         "test": {
@@ -124,20 +124,15 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "node_modules/sweetalert2/src/sweetalert2.scss",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "src/styles.scss"
             ],
-            "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
-            ]
+            "scripts": []
           }
         }
       }
     }
   },
   "cli": {
-    "analytics": "efebacbb-3fc8-443e-8c81-05cc933e3027"
+    "analytics": "8e14436f-edf8-4fa5-a697-2e8ca28ce4a0"
   }
 }

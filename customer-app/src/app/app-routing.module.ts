@@ -6,67 +6,66 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { TasksComponent } from './pages/tasks/tasks.component';
 import { DxAccordionModule, DxBoxModule, DxButtonModule, DxChartModule, DxDataGridModule, DxDateBoxModule, DxDropDownBoxModule, DxFormModule, DxListModule, DxLoadIndicatorModule, DxLoadPanelModule, DxPopupModule, DxSelectBoxModule, DxTabPanelModule, DxTemplateModule, DxTextAreaModule, DxTreeViewComponent, DxTreeViewModule, DxValidationSummaryModule } from 'devextreme-angular';
-import { AuthGuard } from './_helpers';
-import { CustomerUserComponent } from './pages/customer-user/customer-user.component';
 import { CustomerRegisterComponent } from './pages/customer-register/customer-register.component';
 import { CustomerOrderComponent } from './pages/customer-order/customer-order.component';
 import { CustomerListComponent } from './pages/customer-list/customer-list.component';
 import { CustomerOrderHistoryComponent } from './pages/customer-order-history/customer-order-history.component';
 import { CustomerInvoiceComponent } from './pages/customer-invoice/customer-invoice.component';
 import { CustomerStatementComponent } from './pages/customer-statement/customer-statement.component';
+import { CustomerUserComponent } from './pages/customer-user/customer-user.component';
 import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
     path: 'tasks',
     component: TasksComponent,
-    canActivate: [ AuthGuard ]
+    canActivate: [ AuthGuardService ]
   },
   {
     path: 'profile',
     component: ProfileComponent,
-    canActivate: [ AuthGuard ]
+    canActivate: [ AuthGuardService ]
   },
   {
     path: 'home',
     component: HomeComponent,
-    canActivate: [ AuthGuard ]
+    canActivate: [ AuthGuardService ]
   },
   {
     path: 'login-form',
-    component: LoginFormComponent
+    component: LoginFormComponent,
+    canActivate: [ AuthGuardService ]
   },
   {
     path: 'reset-password',
     component: ResetPasswordFormComponent,
-    canActivate: [ AuthGuard ]
+    canActivate: [ AuthGuardService ]
   },
   {
     path: 'create-account',
-    component: CreateAccountFormComponent
+    component: CreateAccountFormComponent,
+    canActivate: [ AuthGuardService ]
   },
   {
     path: 'change-password/:recoveryCode',
     component: ChangePasswordFormComponent,
-    canActivate: [ AuthGuard ]
+    canActivate: [ AuthGuardService ]
   },
-  { path: 'user-data', component: CustomerUserComponent, canActivate: [AuthGuard] },
-  { path: 'create-customer', component: CustomerUserComponent, canActivate: [AuthGuard] },
-  { path: 'open-orders', component: CustomerOrderComponent, canActivate: [AuthGuard] },
-  { path: 'customer-list', component: CustomerListComponent, canActivate: [AuthGuard] },
-  { path: 'customer-order-history', component: CustomerOrderHistoryComponent, canActivate: [AuthGuard] },
-  { path: 'customer-invoice', component: CustomerInvoiceComponent, canActivate: [AuthGuard] },
-  { path: 'customer-statement', component: CustomerStatementComponent, canActivate: [AuthGuard] },
-  
+  { path: 'user-data', component: CustomerUserComponent, canActivate: [AuthGuardService] },
+  { path: 'create-customer', component: CustomerUserComponent, canActivate: [AuthGuardService] },
+  { path: 'open-orders', component: CustomerOrderComponent, canActivate: [AuthGuardService] },
+  { path: 'customer-list', component: CustomerListComponent, canActivate: [AuthGuardService] },
+  { path: 'customer-order-history', component: CustomerOrderHistoryComponent, canActivate: [AuthGuardService] },
+  { path: 'customer-invoice/:invoiceNo', component: CustomerInvoiceComponent, canActivate: [AuthGuardService] },
+  { path: 'customer-statement', component: CustomerStatementComponent, canActivate: [AuthGuardService] },
   {
     path: '**',
-    redirectTo: '',
-    canActivate: [AuthGuard]
+    redirectTo: 'home'
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true }), DxDataGridModule, DxFormModule, 
+  imports: [RouterModule.forRoot(routes, { useHash: true }), DxDataGridModule, DxFormModule,
     DxButtonModule,
     DxPopupModule,
     DxLoadIndicatorModule,
@@ -86,9 +85,9 @@ const routes: Routes = [
     DxTemplateModule,
     DxTabPanelModule,
     DxDateBoxModule,
-    DxTreeViewModule],
-    
-  providers: [AuthGuard],
+    DxTreeViewModule,
+    RouterModule],
+  providers: [AuthGuardService],
   exports: [RouterModule],
   declarations: [
     HomeComponent,

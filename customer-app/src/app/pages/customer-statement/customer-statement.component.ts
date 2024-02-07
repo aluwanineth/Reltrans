@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { AuthenticationService } from 'src/app/shared/services/account.service';
 import { CustomerService } from 'src/app/shared/services/customer.service';
+import { exportDataGrid } from 'devextreme/excel_exporter';
+import * as ExcelJS from 'exceljs';
+import { saveAs } from 'file-saver'
+import Swal from 'sweetalert2';
+import { AuthService } from 'src/app/shared/services';
 
 @Component({
   selector: 'app-customer-statement',
@@ -14,13 +18,15 @@ export class CustomerStatementComponent {
   endDate: Date = new Date();
   dataSource: any;
   loadingVisible: boolean = false;
+  popupVisible: boolean = false;
   mySubscription: any;
   companyName: string = '';
   startDateformattedDate: any;
   endDateformattedDate: any;
+ 
 
   constructor(private router: Router, private customerService: CustomerService,
-    private authService: AuthenticationService) {
+    private authService: AuthService) {
     this.authService.user.subscribe(x => this.currentUser = x);
     // tslint:disable-next-line: only-arrow-functions
     this.router.routeReuseStrategy.shouldReuseRoute = function() {
@@ -36,10 +42,20 @@ export class CustomerStatementComponent {
     if (this.currentUser) {
       this.companyName =  this.currentUser.accNo; 
     }
+    this.viewInvoiceOnClick = this.viewInvoiceOnClick.bind(this);
   }
+
   ngOnInit(): void {
-   // const toDate = date.format('yyyy/MM/DD');
-   console.log(this.currentUser);
+    const now = new Date();
+    const eDate = new Date();
+    const currentMonth = eDate.getMonth();
+    const previousMonth = currentMonth - 1;
+    this.startDate = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+    this.endDate = new Date(eDate.getFullYear(), previousMonth, 30);
+    this.startDateformattedDate = this.startDate.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
+    this.endDateformattedDate = this.endDate.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
+   // this.endDate.setDate(0);
+   this.search();
   }
 
   onStartDateValueChanged(e: any) {
@@ -53,6 +69,63 @@ export class CustomerStatementComponent {
   this.endDateformattedDate = e.value.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
  }
  search() {
-  
+     this.loadingVisible = true;
+    this.customerService.getCustomerStatement(this.companyName, this.startDateformattedDate, this.endDateformattedDate)
+    .subscribe( data => {
+      this.dataSource = data.result;
+      console.log(this.dataSource);
+      this.loadingVisible = false;
+    });
  }
+
+ viewInvoiceOnClick(e: any){
+  const data = e.row.data;
+
+  if(data.ourRef.includes('INV')) {
+     const invoiceNo = data.ourRef;
+     //this.popupVisible = true;
+     this.router.navigate(['/customer-invoice',invoiceNo]);
+     console.log(invoiceNo)
+  } else {
+    Swal.fire(
+      '',
+      'Please select an invoive'
+      ,
+      'info'
+    );
+  }
+ }
+
+ private static isChief(position: any) {
+  return position && ['CEO', 'CMO'].indexOf(position.trim().toUpperCase()) >= 0;
+ }
+
+ isViewInvoice(e: any) {
+  if(e.data.ourRef.includes('INV'))
+     return true;
+    else
+       return false;
+ }
+ 
+ onExporting(e: any) {
+  const workbook = new ExcelJS.Workbook();
+  const ws = workbook.addWorksheet('Statement Data');
+
+  exportDataGrid({
+    component: e.component,
+    worksheet: ws,
+    autoFilterEnabled: true
+  // tslint:disable-next-line: only-arrow-functions
+  }).then(function() {
+    // https://github.com/exceljs/exceljs#writing-xlsx
+    // tslint:disable-next-line: only-arrow-functions
+    workbook.xlsx.writeBuffer().then(function(buffer: any) {
+      saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'Statement.xlsx');
+    });
+  });
+  e.cancel = true;
+ }
+ customizeText(value: any) {
+  return new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value);
+}
 }

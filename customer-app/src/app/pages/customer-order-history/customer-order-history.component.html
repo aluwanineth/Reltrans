@@ -32,7 +32,7 @@
       <dxo-paging [pageSize]="10"></dxo-paging>
       <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
       <dxo-filter-row [visible]="true"></dxo-filter-row>
-      <dxi-column dataField="captureDate" column="Capture Date">
+      <dxi-column dataField="captureDate" column="Capture Date" dataType="date" [format]="'yyyy-MM-dd'">
       </dxi-column>
       <dxi-column dataField="yourRef" column="Reference">
       </dxi-column>
@@ -44,13 +44,13 @@
         </dxi-column>
         <dxi-column dataField="qty" column="Quatity">
           </dxi-column>
-          <dxi-column dataField="unitCost" column="Unit Cost">
+          <dxi-column dataField="unitCost" column="Unit Cost" format="fixedPoint: 2">
         </dxi-column>
-        <dxi-column dataField="total" column="Total">
+        <dxi-column dataField="total" column="Total" format="fixedPoint: 2">
           </dxi-column>
-          <dxi-column dataField="discountPerc" column="Discount %">
+          <dxi-column dataField="discountPerc" column="Discount %" format="fixedPoint: 2">
           </dxi-column>
-          <dxi-column dataField="netAmount" column="Net Amount">
+          <dxi-column dataField="netAmount" column="Net Amount"format="fixedPoint: 2"v>
           </dxi-column>
           <dxi-column dataField="status" column="status">
             </dxi-column>
