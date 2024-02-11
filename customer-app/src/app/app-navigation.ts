@@ -34,27 +34,26 @@ export const adminNavigation = [
   },
   {
     text: 'Accounts',
-    icon: 'cart',
+    icon: 'assets/img/account.svg',
     items: [
       {
         text: 'Statement',
         path: '/customer-statement',
-        icon: 'assets/img/quaterlyData.svg',
+        icon: 'assets/img/statement.svg',
       }
     ],
   },
   {
     text: 'GA',
-    badge: 12,
     icon: 'pinleft',
     items: [
       {
         text: 'GA and Specs',
-        path: '/ga-spec',
+        path: '/customer-ga',
         icon: 'columnchooser',
       },
       {
-        text: 'GA and Specs History',
+        text: 'Specs History',
         path: '/ga-spec-history',
         icon: 'range',
       }

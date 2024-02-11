@@ -48,23 +48,25 @@
               </dxi-column>
               <dxi-column dataField="payRef" column="Pay Ref">
               </dxi-column>
-              <dxi-column dataField="debit" column="Debit" [format]="{ type: 'currency', precision: 2 }">
+              <dxi-column dataField="debit" column="Debit" dataType="number">
+                <dxo-format type="fixedPoint" precision="2"></dxo-format>
                 </dxi-column>
-                <dxi-column dataField="credit" column="Credit" [format]="{ type: 'currency', precision: 2 }">
+                <dxi-column dataField="credit" column="Credit" dataType="number">
+                  <dxo-format type="fixedPoint" precision="2"></dxo-format>
               </dxi-column>
-              <dxi-column dataField="total" column="Total" >
-                
+              <dxi-column dataField="total" column="Total" dataType="number">
+                <dxo-format type="fixedPoint" precision="2"></dxo-format>
                 </dxi-column>
-                <dxi-column dataField="discount" column="Discount" [format]="{ type: 'currency', precision: 2 }">
+                <dxi-column dataField="discount" column="Discount" dataType="number">
+                  <dxo-format type="fixedPoint" precision="2"></dxo-format>
                 </dxi-column>
                 <dxi-column type="buttons" [width]="110">
-                    <dxi-button
-                      hint="View Invoice"
-                      icon="parentfolder"
-                      [onClick]="viewInvoiceOnClick"
-                     
-                    ></dxi-button>
-                  </dxi-column>
+                  <dxi-button  
+                              hint="View Invoice" 
+                              icon="parentfolder"
+                              [onClick]="viewInvoiceOnClick">
+                  </dxi-button>
+                </dxi-column>
                   
             <dxo-export [enabled]="true" [allowExportSelectedData]="true"></dxo-export>
 
@@ -72,10 +74,10 @@
           
   </div>
 </div>
-<dx-load-panel #loadPanel shadingColor="rgba(0,0,0,0.4)" [position]="{ of: '#gridContainer' }"
+<!-- <dx-load-panel #loadPanel shadingColor="rgba(0,0,0,0.4)" [position]="{ of: '#gridContainer' }"
 [(visible)]="loadingVisible" [showIndicator]="true" [showPane]="true" [shading]="true"
 [closeOnOutsideClick]="false" >
-</dx-load-panel>
+</dx-load-panel> -->
 
 
 

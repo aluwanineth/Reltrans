@@ -6,10 +6,15 @@ namespace RelTransCustomer.Persistence.Repository;
 
 public class GenericRepositoryAsync<T> : IGenericRepositoryAsync<T> where T : class
 {
-    private readonly ApplicationDbContext _dbContext;
+    private readonly DbContext _dbContext;
 
-    public GenericRepositoryAsync(ApplicationDbContext dbContext)
+    public GenericRepositoryAsync(DbContext dbContext)
     {
+        if (dbContext == null)
+        {
+            throw new ArgumentNullException(nameof(dbContext));
+        }
+
         _dbContext = dbContext;
     }
     public async Task<IReadOnlyList<T>> GetPagedReponseAsync(int pageNumber, int pageSize)

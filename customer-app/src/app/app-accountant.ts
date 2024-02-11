@@ -6,42 +6,25 @@ export const accountantNavigation = [
     },
     {
       text: 'Orders',
-      badge: 12,
-      icon: 'assets/img/icons8-settings.svg',
+      icon: 'cart',
       items: [
         {
-          text: 'Customer Oders',
-          path: '/user-data',
-          icon: 'assets/img/icons8-myspace.svg',
-        },
-        {
-          text: 'Order History',
-          path: '/user-data',
-          icon: 'assets/img/icons8-myspace.svg',
-        },
+          text: 'Open Orders',
+          path: '/open-orders',
+          icon: 'assets/img/quaterlyData.svg',
+        }
       ],
     },
     {
       text: 'Accounts',
-      badge: 12,
-      icon: 'assets/img/icons8-settings.svg',
+      icon: 'assets/img/account.svg',
       items: [
         {
-          text: 'Account Statements',
-          path: '/user-data',
-          icon: 'assets/img/icons8-myspace.svg',
-        },
-        {
-          text: 'Invoices',
-          path: '/user-data',
-          icon: 'assets/img/icons8-myspace.svg',
-        },
-        {
-          text: 'Transaction History',
-          path: '/user-data',
-          icon: 'assets/img/icons8-myspace.svg',
-        },
+          text: 'Statement',
+          path: '/customer-statement',
+          icon: 'assets/img/statement.svg',
+        }
       ],
-    }
+    },
   ];
   

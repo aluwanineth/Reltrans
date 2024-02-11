@@ -44,13 +44,17 @@
         </dxi-column>
         <dxi-column dataField="qty" column="Quatity">
           </dxi-column>
-          <dxi-column dataField="unitCost" column="Unit Cost" format="fixedPoint: 2">
+          <dxi-column dataField="unitCost" column="Unit Cost" dataType="number">
+            <dxo-format type="fixedPoint" precision="2"></dxo-format>
         </dxi-column>
-        <dxi-column dataField="total" column="Total" format="fixedPoint: 2">
+        <dxi-column dataField="total" column="Total" dataType="number">
+          <dxo-format type="fixedPoint" precision="2"></dxo-format>
           </dxi-column>
-          <dxi-column dataField="discountPerc" column="Discount %" format="fixedPoint: 2">
+          <dxi-column dataField="discountPerc" column="Discount %" dataType="number">
+            <dxo-format type="fixedPoint" precision="2"></dxo-format>
           </dxi-column>
-          <dxi-column dataField="netAmount" column="Net Amount"format="fixedPoint: 2"v>
+          <dxi-column dataField="netAmount" column="Net Amount" dataType="number">
+            <dxo-format type="fixedPoint" precision="2"></dxo-format>
           </dxi-column>
           <dxi-column dataField="status" column="status">
             </dxi-column>

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { exportDataGrid } from 'devextreme/excel_exporter';
+import notify from 'devextreme/ui/notify';
 import * as ExcelJS from 'exceljs';
 import { saveAs } from 'file-saver';
 import { AuthService } from 'src/app/shared/services';
@@ -47,7 +48,12 @@ export class CustomerInvoiceComponent {
       this.dataSource = data.result;
       console.log(this.dataSource);
       this.loadingVisible = false;
-    });
+    },
+    error => {
+      this.loadingVisible = false;
+      notify({ message: error.error.Message, width: 300, shading: true }, 'error', 5000);
+    }
+    );
   }
 
   onExporting(e: any) {

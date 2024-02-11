@@ -5,7 +5,7 @@ import { AuthGuardService } from './shared/services';
 import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { TasksComponent } from './pages/tasks/tasks.component';
-import { DxAccordionModule, DxBoxModule, DxButtonModule, DxChartModule, DxDataGridModule, DxDateBoxModule, DxDropDownBoxModule, DxFormModule, DxListModule, DxLoadIndicatorModule, DxLoadPanelModule, DxPopupModule, DxSelectBoxModule, DxTabPanelModule, DxTemplateModule, DxTextAreaModule, DxTreeViewComponent, DxTreeViewModule, DxValidationSummaryModule } from 'devextreme-angular';
+import { DxAccordionModule, DxBoxModule, DxButtonModule, DxChartModule, DxCheckBoxModule, DxDataGridModule, DxDateBoxModule, DxDropDownBoxModule, DxFileUploaderModule, DxFormModule, DxListModule, DxLoadIndicatorModule, DxLoadPanelModule, DxPopupModule, DxProgressBarModule, DxSelectBoxModule, DxTabPanelModule, DxTemplateModule, DxTextAreaModule, DxTreeViewComponent, DxTreeViewModule, DxValidationSummaryModule } from 'devextreme-angular';
 import { CustomerRegisterComponent } from './pages/customer-register/customer-register.component';
 import { CustomerOrderComponent } from './pages/customer-order/customer-order.component';
 import { CustomerListComponent } from './pages/customer-list/customer-list.component';
@@ -14,6 +14,10 @@ import { CustomerInvoiceComponent } from './pages/customer-invoice/customer-invo
 import { CustomerStatementComponent } from './pages/customer-statement/customer-statement.component';
 import { CustomerUserComponent } from './pages/customer-user/customer-user.component';
 import { FormsModule } from '@angular/forms';
+import { CustomerGaComponent } from './pages/customer-ga/customer-ga.component';
+import { DndDirective } from './shared/directives/dnd.directive';
+import { ProgressComponent } from './shared/components/progress/progress.component';
+import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
   {
@@ -58,6 +62,7 @@ const routes: Routes = [
   { path: 'customer-order-history', component: CustomerOrderHistoryComponent, canActivate: [AuthGuardService] },
   { path: 'customer-invoice/:invoiceNo', component: CustomerInvoiceComponent, canActivate: [AuthGuardService] },
   { path: 'customer-statement', component: CustomerStatementComponent, canActivate: [AuthGuardService] },
+  { path: 'customer-ga', component: CustomerGaComponent, canActivate: [AuthGuardService] },
   {
     path: '**',
     redirectTo: 'home'
@@ -86,7 +91,12 @@ const routes: Routes = [
     DxTabPanelModule,
     DxDateBoxModule,
     DxTreeViewModule,
-    RouterModule],
+    RouterModule,
+    DxCheckBoxModule,
+    DxFileUploaderModule,
+    DxSelectBoxModule,
+    DxProgressBarModule,
+    CommonModule],
   providers: [AuthGuardService],
   exports: [RouterModule],
   declarations: [
@@ -99,7 +109,10 @@ const routes: Routes = [
     CustomerListComponent,
     CustomerStatementComponent,
     CustomerInvoiceComponent,
-    CustomerOrderHistoryComponent
+    CustomerOrderHistoryComponent,
+    CustomerGaComponent,
+    DndDirective,
+    ProgressComponent
   ]
 })
 export class AppRoutingModule { }

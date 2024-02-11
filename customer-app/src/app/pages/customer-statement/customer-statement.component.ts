@@ -6,6 +6,7 @@ import * as ExcelJS from 'exceljs';
 import { saveAs } from 'file-saver'
 import Swal from 'sweetalert2';
 import { AuthService } from 'src/app/shared/services';
+import notify from 'devextreme/ui/notify';
 
 @Component({
   selector: 'app-customer-statement',
@@ -43,6 +44,7 @@ export class CustomerStatementComponent {
       this.companyName =  this.currentUser.accNo; 
     }
     this.viewInvoiceOnClick = this.viewInvoiceOnClick.bind(this);
+    this.isViewInvoice = this.isViewInvoice.bind(this);
   }
 
   ngOnInit(): void {
@@ -59,13 +61,9 @@ export class CustomerStatementComponent {
   }
 
   onStartDateValueChanged(e: any) {
-    console.log(e.previousValue);
-    console.log(e.value);
     this.startDateformattedDate = e.value.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
  }
  onEndDateValueChanged(e: any) {
-  console.log(e.previousValue);
-  console.log(e.value);
   this.endDateformattedDate = e.value.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
  }
  search() {
@@ -73,8 +71,12 @@ export class CustomerStatementComponent {
     this.customerService.getCustomerStatement(this.companyName, this.startDateformattedDate, this.endDateformattedDate)
     .subscribe( data => {
       this.dataSource = data.result;
-      console.log(this.dataSource);
+      console.log(JSON.stringify(this.dataSource));
       this.loadingVisible = false;
+    },
+    error => {
+      this.loadingVisible = false;
+      notify({ message: error.error.Message, width: 300, shading: true }, 'error', 5000);
     });
  }
 
@@ -101,11 +103,18 @@ export class CustomerStatementComponent {
  }
 
  isViewInvoice(e: any) {
+  console.log(e.data.ourRef.includes('INV'));
   if(e.data.ourRef.includes('INV'))
      return true;
     else
        return false;
  }
+
+ shouldShowInvoiceButton(): boolean {
+  // Your condition here to check if 'ourRef' column contains 'INV'
+  // For example, assuming you have an array of items bound to the grid called 'gridData':
+  return this.dataSource.some((item: { ourRef: string | string[]; }) => item.ourRef.includes('INV'));
+}
  
  onExporting(e: any) {
   const workbook = new ExcelJS.Workbook();

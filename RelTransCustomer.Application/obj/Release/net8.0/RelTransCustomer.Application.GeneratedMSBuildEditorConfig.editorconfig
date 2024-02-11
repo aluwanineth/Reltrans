@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = RelTransCustomer.Application
-build_property.ProjectDir = C:\GitLab\Azure\RelTransCustomer\RelTransCustomer.Application\
+build_property.ProjectDir = C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Application\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

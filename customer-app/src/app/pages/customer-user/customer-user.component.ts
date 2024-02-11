@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import notify from 'devextreme/ui/notify';
 import { first } from 'rxjs';
 import { AuthService } from 'src/app/shared/services';
 import { CustomerService } from 'src/app/shared/services/customer.service';
@@ -51,6 +52,9 @@ export class CustomerUserComponent implements OnInit {
     .subscribe( data => {
       this.dataSource = data.result;
       console.log(this.dataSource);
+    },
+    error => {
+      notify({ message: error.error.Message, width: 300, shading: true }, 'error', 5000);
     });
   }
 

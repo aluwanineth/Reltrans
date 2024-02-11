@@ -41,6 +41,10 @@ export class CustomerListComponent {
       this.dataSource = data.result;
       this.activeData = this.dataSource.filter((cust: { status: string; }) => cust.status == 'Active');
       this.pendingData = this.dataSource.filter((cust: { status: string; }) => cust.status == 'Pending');
+    },
+    error => {
+      this.loadingVisible = false;
+      notify({ message: error.error.Message, width: 300, shading: true }, 'error', 5000);
     });
   }
 

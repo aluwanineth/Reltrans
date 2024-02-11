@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/5b99179b-a38d-46b3-967e-2f5931394f65/resourceGroups/Kodeca/providers/Microsoft.Web/sites/reltranscustomerapp",
+    "appService.deploySubpath": "dist"
+}

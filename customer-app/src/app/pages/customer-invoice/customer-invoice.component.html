@@ -21,11 +21,14 @@
           </dxi-column>
           <dxi-column dataField="qty" column="Quatity">
             </dxi-column>
-          <dxi-column dataField="total" column="Total" [format]="{ type: 'currency', precision: 2 }">
+          <dxi-column dataField="total" column="Total" dataType="number">
+            <dxo-format type="fixedPoint" precision="2"></dxo-format>
             </dxi-column>
-            <dxi-column dataField="discountPerc" column="Discount %" [format]="{ type: 'currency', precision: 2 }">
+            <dxi-column dataField="discountPerc" column="Discount %" dataType="number">
+              <dxo-format type="fixedPoint" precision="2"></dxo-format>
             </dxi-column>
-            <dxi-column dataField="netAmount" column="Net Amount" [format]="{ type: 'currency', precision: 2 }">
+            <dxi-column dataField="netAmount" column="Net Amount" dataType="number">
+              <dxo-format type="fixedPoint" precision="2"></dxo-format>
             </dxi-column>
         <dxo-export [enabled]="true" [allowExportSelectedData]="true"></dxo-export>
       </dx-data-grid>

@@ -15,6 +15,7 @@ import { AuthService } from 'src/app/shared/services';
 export class CustomerRegisterComponent implements OnInit{
   @ViewChild(DxTreeViewComponent, { static: false }) treeView: any;
   companyName: string = '';
+  accNo: string = '';
   contactTelNo: string = '';
   loading = false;
   formData: any = {};
@@ -52,6 +53,7 @@ export class CustomerRegisterComponent implements OnInit{
       if (this.currentUser) {
         this.companyName =  this.currentUser.companyName; 
         this.contactTelNo = this.currentUser.contactTelNo;
+        this.accNo = this.currentUser.accNo;
       }
     }
 
@@ -65,7 +67,7 @@ export class CustomerRegisterComponent implements OnInit{
     let model = {
       "firstName": this.formData.firstName,
       "surname": this.formData.surname,
-      "accNo": this.companyName,
+      "accNo": this.accNo,
       "companyName": this.companyName,
       "contactTelNo": this.contactTelNo,
       "memberType": this.memberTypes,

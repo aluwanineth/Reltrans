@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { exportDataGrid } from 'devextreme/excel_exporter';
+import notify from 'devextreme/ui/notify';
 import * as ExcelJS from 'exceljs';
 import { saveAs } from 'file-saver';
 import { AuthService } from 'src/app/shared/services';
 import { CustomerService } from 'src/app/shared/services/customer.service';
+import { NumberFormatterPipe } from 'src/app/shared/pipes/TwoDecimalPlacesPipe'
 
 @Component({
   selector: 'app-customer-order-history',
@@ -40,8 +42,12 @@ export class CustomerOrderHistoryComponent implements OnInit{
     }
   }
   ngOnInit(): void {
-   // const toDate = date.format('yyyy/MM/DD');
-   console.log(this.currentUser);
+    const now = new Date();
+    this.startDate = new Date(now.getFullYear() - 1, now.getMonth() - 1, 1);
+
+    this.formattedDate = this.startDate.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
+    
+   this.search();
   }
 
   search() {
@@ -52,6 +58,10 @@ export class CustomerOrderHistoryComponent implements OnInit{
       this.dataSource = data.result;
       console.log(this.dataSource);
       this.loadingVisible = false;
+    },
+    error => {
+      this.loadingVisible = false;
+      notify({ message: error.error.Message, width: 300, shading: true }, 'error', 5000);
     });
   }
 

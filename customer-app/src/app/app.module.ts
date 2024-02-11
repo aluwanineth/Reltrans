@@ -11,6 +11,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { ErrorInterceptor, JwtInterceptor, appInitializer } from './helpers';
 
+
 @NgModule({
   declarations: [
     AppComponent

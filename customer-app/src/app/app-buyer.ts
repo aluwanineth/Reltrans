@@ -6,18 +6,28 @@ export const buyerNavigation = [
     },
     {
       text: 'Orders',
-      badge: 12,
       icon: 'cart',
       items: [
         {
-          text: 'Customer Oders',
-          path: '/customer-orders',
-          icon: 'ordersbox',
+          text: 'Open Orders',
+          path: '/open-orders',
+          icon: 'assets/img/quaterlyData.svg',
         },
         {
           text: 'Order History',
-          path: '/order-history',
-          icon: 'ordersbox',
+          path: '/customer-order-history',
+          icon: 'assets/img/JIT.svg'
+        },
+      ],
+    },
+    {
+      text: 'Accounts',
+      icon: 'assets/img/account.svg',
+      items: [
+        {
+          text: 'Statement',
+          path: '/customer-statement',
+          icon: 'assets/img/statement.svg',
         }
       ],
     },

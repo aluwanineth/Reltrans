@@ -9,12 +9,7 @@ export const rtuser = [
       icon: 'assets/img/icons8-settings.svg',
       items: [
         {
-          text: 'Customers',
-          path: '/customer-list',
-          icon: 'assets/img/data-collection.svg'
-        },
-        {
-            text: 'RT Users',
+            text: 'Customers',
             path: '/customer-list',
             icon: 'assets/img/data-collection.svg'
           },

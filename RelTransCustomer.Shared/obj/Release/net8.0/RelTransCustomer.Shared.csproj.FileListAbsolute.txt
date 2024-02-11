@@ -15,3 +15,21 @@ C:\GitLab\Azure\RelTransCustomer\RelTransCustomer.Shared\obj\Release\net8.0\RelT
 C:\GitLab\Azure\RelTransCustomer\RelTransCustomer.Shared\obj\Release\net8.0\refint\RelTransCustomer.Shared.dll
 C:\GitLab\Azure\RelTransCustomer\RelTransCustomer.Shared\obj\Release\net8.0\RelTransCustomer.Shared.pdb
 C:\GitLab\Azure\RelTransCustomer\RelTransCustomer.Shared\obj\Release\net8.0\ref\RelTransCustomer.Shared.dll
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Shared\bin\Release\net8.0\RelTransCustomer.Shared.deps.json
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Shared\bin\Release\net8.0\RelTransCustomer.Shared.dll
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Shared\bin\Release\net8.0\RelTransCustomer.Shared.pdb
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Shared\bin\Release\net8.0\RelTransCustomer.Application.dll
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Shared\bin\Release\net8.0\RelTransCustomer.Domain.dll
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Shared\bin\Release\net8.0\RelTransCustomer.Application.pdb
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Shared\bin\Release\net8.0\RelTransCustomer.Domain.pdb
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Shared\obj\Release\net8.0\RelTransCustomer.Shared.csproj.AssemblyReference.cache
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Shared\obj\Release\net8.0\RelTransCustomer.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Shared\obj\Release\net8.0\RelTransCustomer.Shared.AssemblyInfoInputs.cache
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Shared\obj\Release\net8.0\RelTransCustomer.Shared.AssemblyInfo.cs
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Shared\obj\Release\net8.0\RelTransCustomer.Shared.csproj.CoreCompileInputs.cache
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Shared\obj\Release\net8.0\RelTransCustomer.Shared.sourcelink.json
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Shared\obj\Release\net8.0\RelTransCustomer.Shared.csproj.CopyComplete
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Shared\obj\Release\net8.0\RelTransCustomer.Shared.dll
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Shared\obj\Release\net8.0\refint\RelTransCustomer.Shared.dll
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Shared\obj\Release\net8.0\RelTransCustomer.Shared.pdb
+C:\GitLab\Reliable Trans\Reltrans\RelTransCustomer.Shared\obj\Release\net8.0\ref\RelTransCustomer.Shared.dll

@@ -16,11 +16,17 @@ public static class ServiceRegistration
         options.UseSqlServer(
             configuration.GetConnectionString("DefaultConnection"),
             b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
-        
+
+        services.AddDbContext<DexDbContext>(options =>
+        options.UseSqlServer(
+            configuration.GetConnectionString("DexConnection"),
+            b => b.MigrationsAssembly(typeof(DexDbContext).Assembly.FullName)));
+
         services.AddTransient(typeof(IGenericRepositoryAsync<>), typeof(GenericRepositoryAsync<>));
         services.AddTransient<ICustomerRepositoryAsync, CustomerRepositoryAsync>();
         services.AddTransient<IMenuRepositoryAsync, MenuRepositoryAsync>();
         services.AddTransient<ISubMenuRepositoryAsync, SubMenuRepositoryAsync>();
+        services.AddTransient<IDesignGARepositoryAsync, DesignGARepositoryAsync>();
 
     }
 }

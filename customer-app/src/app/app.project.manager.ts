@@ -6,19 +6,18 @@ export const projectManagerNavigation = [
     },
     {
       text: 'Orders',
-      badge: 12,
       icon: 'cart',
       items: [
         {
-          text: 'Customer Oders',
-          path: '/customer-orders',
-          icon: 'ordersbox',
+          text: 'Open Orders',
+          path: '/open-orders',
+          icon: 'assets/img/quaterlyData.svg',
         },
         {
           text: 'Order History',
-          path: '/order-history',
-          icon: 'repeat',
-        }
+          path: '/customer-order-history',
+          icon: 'assets/img/JIT.svg'
+        },
       ],
     },
     {
