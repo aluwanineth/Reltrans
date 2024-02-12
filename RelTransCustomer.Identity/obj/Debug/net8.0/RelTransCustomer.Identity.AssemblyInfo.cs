@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RelTransCustomer.Identity")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d1680ec5c3e610ca760fdc5b6d3fad3d571d229c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+51b7f9305d69a16cd350ae98647d1e1550bd799a")]
 [assembly: System.Reflection.AssemblyProductAttribute("RelTransCustomer.Identity")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RelTransCustomer.Identity")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

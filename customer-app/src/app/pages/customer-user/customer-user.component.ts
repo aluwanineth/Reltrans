@@ -110,7 +110,7 @@ export class CustomerUserComponent implements OnInit {
   onRowRemoving(e: RowRemovingEvent) {
     const id = e.data.id;
     const username  = e.data.email;
-    if (e.data.id === 'Administrator') {
+    if (e.data.memberType === 'Administrator') {
       Swal.fire(
         '',
         'You cant delete system admin'

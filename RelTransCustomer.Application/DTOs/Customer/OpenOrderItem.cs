@@ -9,7 +9,7 @@ public record OpenOrderItem
     public double? Qty { get; set; }
     public DateTime OrderDate { get; set; }
     public string Stage { get; set; }
-    public double? Progress { get; set; }
+    public string Progress { get; set; }
     public DateTime PredictDate { get; set; }
     public string CustRef { get; set; }
 }

@@ -5,7 +5,7 @@ export class AppInfoService {
   constructor() {}
 
   public get title() {
-    return 'App Customer';
+    return 'RT Customer Portal';
   }
 
   public get currentYear() {

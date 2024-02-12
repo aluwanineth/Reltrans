@@ -184,7 +184,15 @@ public class AccountService : IAccountService
             }
             else
             {
-                throw new ApiException($"{result.Errors}");
+                string error = string.Empty;
+                if (result.Errors is not null)
+                {
+                    foreach (var err in result.Errors)
+                    {
+                        error += err.Description + " ";
+                    }
+                }
+                throw new ApiException($"{error}");
             }
         }
         else
@@ -503,7 +511,15 @@ public class AccountService : IAccountService
             }
             else
             {
-                throw new ApiException($"{result.Errors}");
+                string error = string.Empty;
+                if(result.Errors is not null)
+                {
+                    foreach (var err in result.Errors) 
+                    {
+                        error = err.Description;
+                    }
+                }
+                throw new ApiException($"{error}");
             }
         }
         else
