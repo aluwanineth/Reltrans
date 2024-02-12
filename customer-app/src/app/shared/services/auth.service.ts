@@ -128,10 +128,6 @@ export class AuthService {
     console.log(customer);
     return this.http.post<any>(`${environment.apiUrl}/api/Account/registerAdministrator`, customer, this.httpOptions)
     // tslint:disable-next-line: no-shadowed-variable
-    .pipe(
-      retry(1),
-      catchError(this.errorHandl)
-    );
   }
 
   refreshToken() {
@@ -147,10 +143,6 @@ registerCustomer(customer: any): Observable<any> {
     console.log(customer);
     return this.http.post<any>(`${environment.apiUrl}/api/Account/registerCustomer`, customer, this.httpOptions)
     // tslint:disable-next-line: no-shadowed-variable
-    .pipe(
-      retry(1),
-      catchError(this.errorHandl)
-    );
   }
 
   confirmRegistration(userId: string) {
@@ -180,26 +172,24 @@ registerCustomer(customer: any): Observable<any> {
 
 
 delete(id: number) {
-    return this.http.delete(`${environment.apiUrl}/api/Account/delete/${id}`);
+    return this.http.delete(`${environment.apiUrl}/api/Account/delete?id=${id}`);
 }
 
 update(request: any): Observable<any>{
   return this.http.put<any>(`${environment.apiUrl}/api/Account/update`, request, this.httpOptions)
-  .pipe(
-    retry(1),
-    catchError(this.errorHandl)
-  );
 }
 
 // helper methods
 errorHandl(error: any) {
+    console.log(error);
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
       // Get client-side error
-      errorMessage = error.error.message;
+      errorMessage = error.message;
     } else {
       // Get server-side error
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.title}`;
+      errorMessage = error.error.message;
+      //errorMessage = `Error Code: ${error.status}\nMessage: ${error.title}`;
     }
     console.log(errorMessage);
     return throwError(errorMessage);

@@ -1,0 +1,33 @@
+<h2 class="content-block">Design GA</h2>
+<div class="content-block">
+  <div class="dx-card responsive-paddings">
+    <dx-data-grid id="gridContainer" class="dx-card wide-card" [dataSource]="dataSource" [focusedRowEnabled]="true"
+    [focusedRowIndex]="0" [columnAutoWidth]="true" [wordWrapEnabled]="true" keyExpr="recid" [showBorders]="true"
+    [columnHidingEnabled]="true">
+
+    <dxo-paging [pageSize]="10"></dxo-paging>
+    <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
+    <dxo-filter-row [visible]="true"></dxo-filter-row>
+    <dxi-column dataField="eventDate" >
+    </dxi-column>
+    <dxi-column dataField="eventType">
+    </dxi-column>
+    <dxi-column dataField="notes">
+    </dxi-column>
+    <dxi-column dataField="revNo">
+    </dxi-column>
+    <dxi-column dataField="sender">
+    </dxi-column>
+    <dxi-column dataField="recipient">
+    </dxi-column>
+    <dxi-column dataField="copied" >
+    </dxi-column>
+    <dxi-column dataField="message">
+    </dxi-column>
+  </dx-data-grid>
+</div>
+</div>
+<dx-load-panel #loadPanel shadingColor="rgba(0,0,0,0.4)" [position]="{ of: '#gridContainer' }"
+[(visible)]="loadingVisible" [showIndicator]="true" [showPane]="true" [shading]="true"
+[closeOnOutsideClick]="false">
+</dx-load-panel>

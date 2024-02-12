@@ -5,6 +5,8 @@ import { first } from 'rxjs';
 import { AuthService } from 'src/app/shared/services';
 import { CustomerService } from 'src/app/shared/services/customer.service';
 import Swal from 'sweetalert2';
+import * as $ from 'jquery';
+import { RowRemovingEvent } from 'devextreme/ui/data_grid';
 
 @Component({
   selector: 'app-customer-user',
@@ -104,7 +106,8 @@ export class CustomerUserComponent implements OnInit {
   }
   }
 
-  onDeleteCustomer(e: any) {
+
+  onRowRemoving(e: RowRemovingEvent) {
     const id = e.data.id;
     const username  = e.data.email;
     if (e.data.id === 'Administrator') {
@@ -116,6 +119,7 @@ export class CustomerUserComponent implements OnInit {
       );
       this.loadData(this.companyName);
     } else {
+      const d = $.Deferred();
       Swal.fire({
         title: 'Are you sure? ',
         text: 'You want to delete ' + username + ' username?',
@@ -129,13 +133,12 @@ export class CustomerUserComponent implements OnInit {
           this.authService.delete(id)
                 .pipe(first())
                   .subscribe( data => {
-                    const audit = {
-                      action: 'Deleting user (' + username + ')',
-                      actionId: e.data.username,
-                      createdDate: Date.now(),
-                      username: this.currentUser.username,
-                      type: 'User'
-                    };
+                    this.loadData(this.companyName);
+                    Swal.fire(
+                      '',
+                      'User Successfully deleted',
+                      'success'
+                    );
                   }, error => {
                     console.log(error);
                     // notify({ message: error, width: 300, shading: true }, 'error', 5000);
@@ -148,7 +151,9 @@ export class CustomerUserComponent implements OnInit {
                   });
         }
       });
+      this.loadData(this.companyName);
     }
+    this.loadData(this.companyName);
   }
 }
 

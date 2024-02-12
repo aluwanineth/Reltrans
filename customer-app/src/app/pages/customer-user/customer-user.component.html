@@ -5,11 +5,14 @@
     keyExpr="id"
     [showBorders]="true"
     (onRowUpdated)="onRowUserUpdated($event)"
+    (onRowRemoving)="onRowRemoving($event)"
     [focusedRowEnabled]="true">
 
     <dxo-editing
         mode="popup"
         [allowUpdating]="true"
+        [allowDeleting]="true"
+        [confirmDelete]="false"
         [selectTextOnEditStart]="true"
         [useIcons]="true">
         <dxo-popup
@@ -55,9 +58,6 @@
     <dxi-column dataField="surname">
     </dxi-column>
 
-    <dxi-column dataField="companyName">
-    </dxi-column>
-
     <dxi-column dataField="memberType">
     </dxi-column>
 
@@ -65,22 +65,7 @@
     </dxi-column>
     <dxi-column dataField="contactTelNo">
     </dxi-column>
-    <dxi-column type="buttons" [width]="110">
-        <dxi-button name="edit"></dxi-button>
-        <dxi-button
-        hint="Activate Customer"
-        icon="delete"
-        [onClick]="onDeleteCustomer"
-      ></dxi-button>
-        <dxi-button
-          hint="Clone"
-          icon="copy"
-        ></dxi-button>
-        <dxi-button
-          hint="Clone"
-          icon="copy"
-        ></dxi-button>
-      </dxi-column>
+    
 
 
 </dx-data-grid>

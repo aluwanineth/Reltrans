@@ -7,7 +7,9 @@ using RelTransCustomer.Application.Features.Customer.Queries.GetCustomerOrders;
 using RelTransCustomer.Application.Features.DesignGA.Commands.UpdateDesignGA;
 using RelTransCustomer.Application.Features.DesignGA.Queries.GetDesignGAByAccNo;
 using RelTransCustomer.Application.Features.DesignGA.Queries.GetDesignGAById;
+using RelTransCustomer.Application.Features.DesignGAHistory.Queries.GetDesignGAHistory;
 using RelTransCustomer.Controllers;
+using RelTransCustomer.WebApi.Models;
 
 namespace RelTransCustomer.WebApi.Controllers.V1
 {
@@ -17,12 +19,14 @@ namespace RelTransCustomer.WebApi.Controllers.V1
     {
         private readonly string _uploadDirectory;
         private readonly IDesignGARepositoryAsync _designGARepositoryAsync;
+        private readonly IDesignGAHistoryRepositoryAsync _designGAHistoryRepositoryAsync;
 
-        public DesignGAController(IConfiguration configuration, IDesignGARepositoryAsync designGARepositoryAsync)
+        public DesignGAController(IConfiguration configuration, IDesignGARepositoryAsync designGARepositoryAsync, IDesignGAHistoryRepositoryAsync designGAHistoryRepositoryAsync)
         {
             _uploadDirectory = configuration["UploadDirectory"];
             _designGARepositoryAsync = designGARepositoryAsync;
-
+            _designGAHistoryRepositoryAsync = designGAHistoryRepositoryAsync;
+            _designGAHistoryRepositoryAsync = designGAHistoryRepositoryAsync;
         }
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -45,10 +49,29 @@ namespace RelTransCustomer.WebApi.Controllers.V1
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [HttpPut("updatetDesignGA")]
+        [HttpPut("updateDesignGA")]
         public async Task<IActionResult> UpdateDesignGA([FromBody] DesignGa designGa)
         {
             return Ok(await Mediator.Send(new UpdateDesignGACommand { DesignGa = designGa }));
+        }
+
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [HttpPost("addDesignGAHistory")]
+        public async Task<IActionResult> AddDesignGAHistory([FromBody] DesignGaHistory request)
+        {
+            var result = await _designGAHistoryRepositoryAsync.AddAsync(request);
+            return Ok(result);
+        }
+
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [HttpGet("getDesignGAHistoryByAccNo")]
+        public async Task<IActionResult> GetDesignGAHistoryByAccNo([FromQuery] string accNo)
+        {
+            return Ok(await Mediator.Send(new GetDesignGAHistoryQuery { AccNo = accNo }));
         }
 
         [HttpGet]
@@ -69,8 +92,11 @@ namespace RelTransCustomer.WebApi.Controllers.V1
         }
 
         [HttpPost("upload")]
-        public async Task<IActionResult> UploadFile(IFormFile file)
+        public async Task<IActionResult> UploadFile(IFormFile file, int id)
         {
+            var designGa = await _designGARepositoryAsync.Get(id);
+            var filePath = Path.Combine(designGa.FileLocation, designGa.DocName);
+
             if (file == null || file.Length == 0)
             {
                 return BadRequest("No file uploaded.");
@@ -89,17 +115,17 @@ namespace RelTransCustomer.WebApi.Controllers.V1
             }
 
             // Generate a unique file name
-            var fileName = GenerateUniqueFileName(file.FileName);
+            var fileName = GenerateFileName(file.FileName, designGa.Status);
 
             // Create the upload directory if it doesn't exist
-            if (!Directory.Exists(_uploadDirectory))
+            if (!Directory.Exists(designGa.FileLocation))
             {
-                Directory.CreateDirectory(_uploadDirectory);
+                Directory.CreateDirectory(designGa.FileLocation);
             }
 
             // Save the file
-            var filePath = Path.Combine(_uploadDirectory, fileName);
-            await using (var stream = new FileStream(filePath, FileMode.Create))
+            var newfilePath = Path.Combine(designGa.FileLocation, fileName);
+            await using (var stream = new FileStream(newfilePath, FileMode.Create))
             {
                 await file.CopyToAsync(stream);
             }
@@ -120,10 +146,10 @@ namespace RelTransCustomer.WebApi.Controllers.V1
             return fileName.EndsWith(".pdf");
         }
 
-        private string GenerateUniqueFileName(string fileName)
+        private string GenerateFileName(string fileName, string status)
         {
             // Use a GUID or other method to ensure uniqueness
-            return Guid.NewGuid().ToString() + Path.GetExtension(fileName);
+            return status + Path.GetExtension(fileName);
         }
     }
 }

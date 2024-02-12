@@ -26,10 +26,11 @@ export class CustomerGaComponent implements OnInit{
   statusData: string[] = [];
   statusLabel = '';
   valueChange = false;
-
+  userEmail: string = ''; 
   textVisible = true;
-
+  notes: string = 'notes';
   progressVisible = false;
+  selectedData: any;
 
   progressValue = 0;
   popupVisible = false;
@@ -39,6 +40,7 @@ export class CustomerGaComponent implements OnInit{
     this.authService.user.subscribe(x => this.currentUser = x);
     if (this.currentUser) {
       this.accNo =  this.currentUser.accNo;
+      this.userEmail = this.currentUser.email;
     }
     this.onDropZoneEnter = this.onDropZoneEnter.bind(this);
     this.onDropZoneLeave = this.onDropZoneLeave.bind(this);
@@ -127,11 +129,42 @@ export class CustomerGaComponent implements OnInit{
       );
       return;
     }
+    const data =  this.selectedData;
+    console.log(this.selectedData);
+    //update 
+    const designGA = {
+      "recid": data.recid,
+      "jobNo": data.jobNo,
+      "accNo": data.accNo,
+      "specNo": data.specNo,
+      "revNo": data.revNo,
+      "docName": data.docName,
+      "status": this.statusLabel,
+      "fileLocation": data.fileLocation
+    };
+    this.updateGa(designGA);
+    const startDate: Date = new Date();
+    
+    const fdate = startDate.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
+    //add history
+    const designGAHistory = {
+      "gaId": data.recid,
+      "eventDate": startDate,
+      "eventType": 'Upload file',
+      "notes": this.notes,
+      "sender": this.userEmail,
+      "recipient": '',
+      "copied": '',
+      "message": ''
+    }
+    this.addGaHistory(designGAHistory);
     this.loadingVisible = true;
+
     const fileToUpload =  files[0] as File;
     const formData = new FormData();
     formData.append('file', fileToUpload, fileToUpload.name);
-    this.designGAService.uploadFile(formData)
+    
+    this.designGAService.uploadFile(formData, data.recid)
     .pipe(first())
     .subscribe(result => {
       this.loadingVisible = false;
@@ -144,11 +177,11 @@ export class CustomerGaComponent implements OnInit{
     }, error => {
       console.log(error);
      // notify({ message: error, width: 300, shading: true }, 'error', 5000);
-      Swal.fire(
-        '',
-        'Error occur while uploading a file',
-        'error'
-      );
+      // Swal.fire(
+      //   '',
+      //   'Error occur while uploading a file',
+      //   'error'
+      // );
       this.loadingVisible = false;
     });
   }
@@ -159,6 +192,31 @@ export class CustomerGaComponent implements OnInit{
   }
 
   viewUploadForm(e : any) {
+    this.selectedData = e.row.data;
     this.popupVisible = true;
+  }
+
+  updateGa(designGA : any){
+    this.designGAService.update(designGA)
+    .pipe(first())
+    .subscribe(result => {
+    }, error => {
+      console.log(error);
+       notify({ message: 'Erorr occurs while updating GA', width: 300, shading: true }, 'error', 5000);
+    });
+  }
+
+  addGaHistory(designGAHistory : any){
+    this.designGAService.addDesignGAHistory(designGAHistory)
+    .pipe(first())
+    .subscribe(result => {
+    }, error => {
+      console.log(error);
+       notify({ message: 'Erorr occurs while adding GA', width: 300, shading: true }, 'error', 5000);
+    });
+  }
+
+  onTextValueChanged(e: any){
+    console.log(e);
   }
 }

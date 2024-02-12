@@ -22,17 +22,16 @@ export const projectManagerNavigation = [
     },
     {
       text: 'GA',
-      badge: 12,
       icon: 'pinleft',
       items: [
         {
           text: 'GA and Specs',
-          path: '/ga-spec',
+          path: '/customer-ga',
           icon: 'columnchooser',
         },
         {
-          text: 'GA and Specs History',
-          path: '/ga-spec-history',
+          text: 'Specs History',
+          path: '/customer-ga-history',
           icon: 'range',
         }
       ],

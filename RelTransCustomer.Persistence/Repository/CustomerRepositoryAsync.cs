@@ -92,6 +92,7 @@ public class CustomerRepositoryAsync : GenericRepositoryAsync<Customer>, ICustom
             if(appUser != null)
             {
                 IdentityResult identityResult = await _userManager.DeleteAsync(appUser);
+                
                 if (identityResult.Succeeded)
                 {
                     await DeleteAsync(customer);

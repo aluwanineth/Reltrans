@@ -24,13 +24,13 @@
     </dxi-column>
     <dxi-column type="buttons" [width]="110">
       <dxi-button  
-                  hint="Download" 
-                  icon="export"
+                  hint="Download file" 
+                  icon="download"
                   [onClick]="downloadOnClick">
       </dxi-button>
       <dxi-button  
       hint="Upload Document" 
-      icon="export"
+      icon="upload"
       [onClick]="viewUploadForm">
 </dxi-button>
     </dxi-column>
@@ -56,6 +56,15 @@
                   (onValueChanged)="onValueChanged($event)">
               ></dx-select-box>
       </div>
+      <div class="dx-field">
+        <dx-text-area
+          [maxHeight]="50"
+          [maxHeight]="300"
+          label="Notes" 
+          [(value)] = "notes"
+    >
+    </dx-text-area>
+      </div>
     </div>
     <div id="fileuploader-container">
       <dx-file-uploader
@@ -78,50 +87,3 @@
   </form>
 </dx-popup>
 
-<!-- <div class="widget-container flex-box">
-    <span>GA Document</span>
-    <div class="option">
-      <span>GA Action</span>
-    <dx-select-box
-      [items]="['Pending', 'Signed', 'Approved']"
-    ></dx-select-box>
-    </div>
-    <div
-      id="dropzone-external"
-      class="flex-box"
-      [ngClass]="
-        isDropZoneActive
-          ? ['dx-theme-accent-as-border-color', 'dropzone-active']
-          : ['dx-theme-border-color']
-      "
-    >
-      <div id="dropzone-text" class="flex-box" *ngIf="textVisible">
-        <span>Drag & Drop the desired file</span>
-        <span>…or click to browse for a file instead.</span>
-      </div>
-      <dx-progress-bar
-        #uploadProgress
-        [min]="0"
-        [max]="100"
-        width="30%"
-        [showStatus]="false"
-        [visible]="progressVisible"
-        [value]="progressValue"
-      ></dx-progress-bar>
-    </div>
-    <dx-file-uploader
-      #fileUploader
-      dialogTrigger="#dropzone-external"
-      dropZone="#dropzone-external"
-      [multiple]="false"
-      [allowedFileExtensions]="['.pdf']"
-      uploadMode="instantly"
-      uploadUrl="https://js.devexpress.com/Demos/NetCore/FileUploader/Upload"
-      [visible]="false"
-      (onDropZoneEnter)="onDropZoneEnter($event)"
-      (onDropZoneLeave)="onDropZoneLeave($event)"
-      (onUploaded)="onUploaded($event)"
-      (onProgress)="onProgress($event)"
-      (onUploadStarted)="onUploadStarted($event)"
-    ></dx-file-uploader>
-  </div> -->

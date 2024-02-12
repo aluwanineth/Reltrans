@@ -10,7 +10,7 @@ export const adminNavigation = [
     path:'',
     items: [
       {
-        text: 'Customers',
+        text: 'Users',
         path: '/user-data',
         icon: 'assets/img/icons8-myspace.svg',
       }
@@ -54,7 +54,7 @@ export const adminNavigation = [
       },
       {
         text: 'Specs History',
-        path: '/ga-spec-history',
+        path: '/customer-ga-history',
         icon: 'range',
       }
     ],

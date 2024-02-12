@@ -50,6 +50,7 @@ export class CreateAccountFormComponent {
               this.router.navigate(['/user-data']);
             },
             error => {
+              console.log("Error in ", error)
               notify({ message: error.error.Message, width: 300, shading: true }, 'error', 5000);
             }
         );

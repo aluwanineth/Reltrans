@@ -824,10 +824,11 @@ public partial class DexDbContext : DbContext
 
         modelBuilder.Entity<DesignGa>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("Design_GA");
+            entity.HasKey(e => e.Recid).HasName("PK__Design_G__A9A5B3BBD0D0C02B");
 
+            entity.ToTable("Design_GA");
+
+            entity.Property(e => e.Recid).HasColumnName("RECID");
             entity.Property(e => e.AccNo)
                 .HasMaxLength(50)
                 .IsUnicode(false);
@@ -840,9 +841,6 @@ public partial class DexDbContext : DbContext
             entity.Property(e => e.JobNo)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-            entity.Property(e => e.Recid)
-                .ValueGeneratedOnAdd()
-                .HasColumnName("RECID");
             entity.Property(e => e.SpecNo)
                 .HasMaxLength(50)
                 .IsUnicode(false);
@@ -853,10 +851,11 @@ public partial class DexDbContext : DbContext
 
         modelBuilder.Entity<DesignGaHistory>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("Design_GA_History");
+            entity.HasKey(e => e.Recid);
 
+            entity.ToTable("Design_GA_History");
+
+            entity.Property(e => e.Recid).HasColumnName("RECID");
             entity.Property(e => e.Copied)
                 .HasMaxLength(500)
                 .IsUnicode(false);
@@ -871,9 +870,6 @@ public partial class DexDbContext : DbContext
             entity.Property(e => e.Notes)
                 .HasMaxLength(500)
                 .IsUnicode(false);
-            entity.Property(e => e.Recid)
-                .ValueGeneratedOnAdd()
-                .HasColumnName("RECID");
             entity.Property(e => e.Recipient)
                 .HasMaxLength(500)
                 .IsUnicode(false);

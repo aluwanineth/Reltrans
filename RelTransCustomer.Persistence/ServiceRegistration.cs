@@ -27,6 +27,7 @@ public static class ServiceRegistration
         services.AddTransient<IMenuRepositoryAsync, MenuRepositoryAsync>();
         services.AddTransient<ISubMenuRepositoryAsync, SubMenuRepositoryAsync>();
         services.AddTransient<IDesignGARepositoryAsync, DesignGARepositoryAsync>();
+        services.AddTransient<IDesignGAHistoryRepositoryAsync, DesignGAHistoryRepositoryAsync>();    
 
     }
 }

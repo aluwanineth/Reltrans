@@ -18,6 +18,7 @@ import { CustomerGaComponent } from './pages/customer-ga/customer-ga.component';
 import { DndDirective } from './shared/directives/dnd.directive';
 import { ProgressComponent } from './shared/components/progress/progress.component';
 import { CommonModule } from '@angular/common';
+import { CustomerGaHistoryComponent } from './pages/customer-ga-history/customer-ga-history.component';
 
 const routes: Routes = [
   {
@@ -63,6 +64,7 @@ const routes: Routes = [
   { path: 'customer-invoice/:invoiceNo', component: CustomerInvoiceComponent, canActivate: [AuthGuardService] },
   { path: 'customer-statement', component: CustomerStatementComponent, canActivate: [AuthGuardService] },
   { path: 'customer-ga', component: CustomerGaComponent, canActivate: [AuthGuardService] },
+  { path: 'customer-ga-history', component: CustomerGaHistoryComponent, canActivate: [AuthGuardService] },
   {
     path: '**',
     redirectTo: 'home'
@@ -112,7 +114,8 @@ const routes: Routes = [
     CustomerOrderHistoryComponent,
     CustomerGaComponent,
     DndDirective,
-    ProgressComponent
+    ProgressComponent,
+    CustomerGaHistoryComponent
   ]
 })
 export class AppRoutingModule { }
