@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-    apiUrl: 'https://reltranscustomerapi.azurewebsites.net'
+    apiUrl: 'https://api.reltrans.co.za'
    //apiUrl: 'https://localhost:7180',
 };

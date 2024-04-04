@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
- // apiUrl: 'https://localhost:7180',
-  apiUrl: 'https://reltranscustomerapi.azurewebsites.net',
+  //apiUrl: 'https://localhost:7180',
+  apiUrl: 'https://api.reltrans.co.za',
   production: false,
 };
 

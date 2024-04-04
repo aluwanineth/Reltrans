@@ -119,8 +119,29 @@ export class AuthService {
   }
 
   async logOut() {
+    // let currentUser: Customer | null = { email: '',firstName: '',surname:'', accNo: '', companyName:'',contactTelNo:'', memberType: [] };
+    // this.user.subscribe(x => currentUser = x);
+    const obj = this.tokenValue;
+    const loggedOutModel = {
+      email: obj?.result.email,
+      userId: obj?.result.id,
+      token: obj?.result.jwToken
+    };
+    this.http.post<any>(`${environment.apiUrl}/api/Account/logout`, loggedOutModel, this.httpOptions)
+  .subscribe(
+    response => {
+      console.log('Logout successful:', response);
+      // Handle success if needed
+    },
+    error => {
+      console.error('Logout failed:', error);
+      // Handle error if needed
+    }
+  );
+    console.log(loggedOutModel);
     this.userSubject.next(null);
     this.tokenSubject.next(null);
+    
     this.router.navigate(['/login-form']);
   }
 

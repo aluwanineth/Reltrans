@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "USxYk31ithOe0RDH3U8Sgzn11lYUl0a/HIXTUXUfgqjLlOW1rorodlybQuZ2fJdKeb7inULOEV5kwjU9/1caFQ==",
-  "success": true,
+  "dgSpecHash": "WGQMf3rpJ7hNtI5tNrw9r1/BXvqgtRfsU2AQH+Cs6IQfgY1RU5WHd2dhK2SH1G27YVJSd+AFrlt70QgffcHIFQ==",
+  "success": false,
   "projectFilePath": "C:\\GitLab\\Reliable Trans\\Reltrans\\RelTransCustomer.Identity\\RelTransCustomer.Identity.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\aluwa\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
@@ -30,9 +30,9 @@
     "C:\\Users\\aluwa\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\aluwa\\.nuget\\packages\\microsoft.data.sqlclient\\5.1.1\\microsoft.data.sqlclient.5.1.1.nupkg.sha512",
     "C:\\Users\\aluwa\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\5.1.0\\microsoft.data.sqlclient.sni.runtime.5.1.0.nupkg.sha512",
-    "C:\\Users\\aluwa\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.1\\microsoft.entityframeworkcore.8.0.1.nupkg.sha512",
-    "C:\\Users\\aluwa\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.1\\microsoft.entityframeworkcore.abstractions.8.0.1.nupkg.sha512",
-    "C:\\Users\\aluwa\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\8.0.1\\microsoft.entityframeworkcore.analyzers.8.0.1.nupkg.sha512",
+    "C:\\Users\\aluwa\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.2\\microsoft.entityframeworkcore.8.0.2.nupkg.sha512",
+    "C:\\Users\\aluwa\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.2\\microsoft.entityframeworkcore.abstractions.8.0.2.nupkg.sha512",
+    "C:\\Users\\aluwa\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\8.0.2\\microsoft.entityframeworkcore.analyzers.8.0.2.nupkg.sha512",
     "C:\\Users\\aluwa\\.nuget\\packages\\microsoft.entityframeworkcore.design\\8.0.1\\microsoft.entityframeworkcore.design.8.0.1.nupkg.sha512",
     "C:\\Users\\aluwa\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\8.0.1\\microsoft.entityframeworkcore.relational.8.0.1.nupkg.sha512",
     "C:\\Users\\aluwa\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\8.0.1\\microsoft.entityframeworkcore.sqlserver.8.0.1.nupkg.sha512",
@@ -97,5 +97,24 @@
     "C:\\Users\\aluwa\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\aluwa\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1605",
+      "level": "Error",
+      "message": "Warning As Error: Detected package downgrade: Microsoft.EntityFrameworkCore.SqlServer from 8.0.2 to 8.0.1. Reference the package directly from the project to select a different version. \r\n RelTransCustomer.Identity -> RelTransCustomer.Persistence -> Microsoft.EntityFrameworkCore.SqlServer (>= 8.0.2) \r\n RelTransCustomer.Identity -> Microsoft.EntityFrameworkCore.SqlServer (>= 8.0.1)",
+      "libraryId": "Microsoft.EntityFrameworkCore.SqlServer",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1605",
+      "level": "Error",
+      "message": "Warning As Error: Detected package downgrade: Microsoft.AspNetCore.Identity.EntityFrameworkCore from 8.0.2 to 8.0.1. Reference the package directly from the project to select a different version. \r\n RelTransCustomer.Identity -> RelTransCustomer.Shared -> Microsoft.AspNetCore.Identity.EntityFrameworkCore (>= 8.0.2) \r\n RelTransCustomer.Identity -> Microsoft.AspNetCore.Identity.EntityFrameworkCore (>= 8.0.1)",
+      "libraryId": "Microsoft.AspNetCore.Identity.EntityFrameworkCore",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }
